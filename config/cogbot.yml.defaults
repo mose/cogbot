@@ -2,7 +2,7 @@ main:
   server: 'irc.freenode.net'
   nick: 'cogbot'
   channels:
-  - '#cogbot'
+  - '#cinch-bots'
   prefix: '.'
   plugins:
   - 'plugins'

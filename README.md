@@ -1,6 +1,6 @@
 # Cogbot
 
-Cogbot is an irc bot written in ruby based on Cinch bot framework.
+Cogbot is an irc bot written in ruby based on [Cinch bot framework](https://github.com/cinchrb/cinch).
 
 ## Installation
 
