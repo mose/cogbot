@@ -7,9 +7,9 @@ class Plugins
 
   set :help, <<EOF
 help for the Plugins plugin
-  list        : list loaded plugins
-  reload <p>  : reload plugin <p>
-  help <p>    : show help for plugin <p>
+.p  list        : list loaded plugins
+.p  reload <p>  : reload plugin <p>
+.p  help <p>    : show help for plugin <p>
 EOF
 
   def loaded plugin
@@ -49,7 +49,7 @@ EOF
     when /^list/
       @bot.config.plugins.plugins.each { |p| back += "#{p.name} " }
     else
-      back = "commands: list, reload <plugin>\n"
+      back = "commands: list, reload <plugin>, help <plugin>\n"
       back += "  Commands to work with plugins. use 'help <plugin>' for more info."
     end
     return back

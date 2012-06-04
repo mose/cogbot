@@ -5,12 +5,12 @@ class Exec
 
   set :help, <<EOT
 Exec is a commandline execution proxy: do <command> <pipe-grep> (only the 5 first lines will be displayed)
-  psaux    : rnning processes
-  df       : Disk free
-  last     : last logged
-  free     : free mem
-  who      : who is logged
-  uptime   : uptime and load average
+.do  psaux    : rnning processes
+.do  df       : Disk free
+.do  last     : last logged
+.do  free     : free mem
+.do  who      : who is logged
+.do  uptime   : uptime and load average
 EOT
 
   def exec(command,args)

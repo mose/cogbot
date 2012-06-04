@@ -9,7 +9,7 @@ class Google
 
   set :help, <<EOT
 Google returns the first google match on a search
-  <keywords> : searches on those keywords
+.g  <keywords> : searches on those keywords
 EOT
 
   def search(query)

@@ -7,7 +7,7 @@ class Tweet
 
   set :help, <<EOT
 Tweet makes the bot can query twittter API
-  search <term> : searches the public timelines
+.t search <term> : searches the public timelines
 EOT
 
 =begin
