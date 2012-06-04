@@ -1,5 +1,6 @@
 require 'cinch'
 require "lib/cogbot/version"
+require "lib/cogbot/utils"
 
 module Cogbot
 

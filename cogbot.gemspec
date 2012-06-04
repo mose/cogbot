@@ -15,8 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Cogbot::VERSION
 
-  gem.s.add_development_dependency 'cinch'
-  gem.s.add_development_dependency 'yaml'     # config parsing
-  gem.s.add_development_dependency 'twitter'  # twitter plugin
-  gem.s.add_development_dependency 'nokogiri' # google plugin
+  gem.s.add_dependency 'cinch'
+  gem.s.add_dependency 'yaml'     # config parsing
+  gem.s.add_dependency 'twitter'  # twitter plugin
+  gem.s.add_dependency 'nokogiri' # google plugin
 end
