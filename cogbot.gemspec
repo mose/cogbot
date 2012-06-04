@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["mose"]
   gem.email         = ["mose@mose.com"]
   gem.description   = 'Irc bot based on Cinch'
-  gem.summary       = gem.description
+  gem.summary       = 'Yet another irc bot, more a toy and a sandbox than a real product at this stage'
   gem.homepage      = "https://github.com/mose/cogbot"
 
   gem.files         = `git ls-files`.split($\)
@@ -15,8 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Cogbot::VERSION
 
-  gem.s.add_dependency 'cinch'
-  gem.s.add_dependency 'yaml'     # config parsing
-  gem.s.add_dependency 'twitter'  # twitter plugin
-  gem.s.add_dependency 'nokogiri' # google plugin
+  gem.add_dependency 'cinch'
+  gem.add_dependency 'twitter'  # twitter plugin
+  gem.add_dependency 'nokogiri' # google plugin
 end
