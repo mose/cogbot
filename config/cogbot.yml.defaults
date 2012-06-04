@@ -1,0 +1,16 @@
+main:
+  server: 'irc.freenode.net'
+  nick: 'cogbot'
+  channels:
+  - '#cogbot'
+  prefix: '.'
+  plugins:
+  - 'plugins'
+  - 'google'
+  - 'exec'
+  - 'tweet'
+tweet:
+  consumer_key: ''
+  consumer_secret: ''
+  oauth_token: ''
+  oauth_token_secret: ''

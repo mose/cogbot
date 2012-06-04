@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+ROOT_DIR = File.dirname(File.dirname(__FILE__))
+$LOAD_PATH.unshift(ROOT_DIR)
+CONFIG_FILE = File.join(ROOT_DIR,'config','cogbot.yml')
+
+require 'yaml'
+require 'lib/cogbot'
+
+bot = Cogbot.makebot
+bot.start
