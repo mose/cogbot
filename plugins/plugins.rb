@@ -13,7 +13,7 @@ help for the Plugins plugin
 EOF
 
   def loaded plugin
-    @bot.plugins.any? { |p| p.to_s.downcase == plugin }
+    @bot.config.plugins.plugins.any? { |p| p.to_s.downcase == plugin }
   end
 
   def exec(query)
@@ -47,7 +47,7 @@ EOF
         back = "Plugin '#{plug}' not found."
       end
     when /^list/
-      back = @bot.plugins.join(' ')
+      @bot.config.plugins.plugins.each { |p| back += "#{p.name} " }
     else
       back = "commands: list, reload <plugin>\n"
       back += "  Commands to work with plugins. use 'help <plugin>' for more info."
