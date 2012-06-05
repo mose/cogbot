@@ -7,10 +7,15 @@ class Google
 
   match /g (.+)/
 
+  set :plugin_name, 'google'
   set :help, <<EOT
 Google returns the first google match on a search
 .g  <keywords> : searches on those keywords
 EOT
+
+  def new(bot)
+    @bot = bot
+  end
 
   def search(query)
     url = "http://www.google.com/search?q=#{CGI.escape(query)}"

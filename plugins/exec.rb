@@ -3,6 +3,7 @@ class Exec
 
   match /do ([^ ]*)( ?.*)/
 
+  set :plugin_name, 'exec'
   set :help, <<EOT
 Exec is a commandline execution proxy: do <command> <pipe-grep> (only the 5 first lines will be displayed)
 .do  psaux    : rnning processes
@@ -12,6 +13,10 @@ Exec is a commandline execution proxy: do <command> <pipe-grep> (only the 5 firs
 .do  who      : who is logged
 .do  uptime   : uptime and load average
 EOT
+
+  def new(bot)
+    @bot = bot
+  end
 
   def exec(command,args)
     commands = {

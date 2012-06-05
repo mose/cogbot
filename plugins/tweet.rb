@@ -5,6 +5,7 @@ class Tweet
 
   match /t ?([^ ]*)?( ?.*)/
 
+  set :plugin_name, 'tweet'
   set :help, <<EOT
 Tweet makes the bot can query twittter API
 .t search <term> : searches the public timelines
@@ -18,6 +19,10 @@ EOT
     c.oauth_token_secret = @bot.config.options.cogconf['tweet']['oauth_token_secret']
   end
 =end
+
+  def new(bot)
+    @bot = bot
+  end
 
   def exec(command,args)
     back = ''
