@@ -1,7 +1,7 @@
 class Dice
   include Cinch::Plugin
 
-  match /roll$/, :use_prefix => false
+  match /^roll$/
 
   set :plugin_name, 'dice'
   set :help, <<EOT

@@ -1,4 +1,5 @@
 require 'cinch'
+#require 'cinch/storage/yaml'
 require "lib/cogbot/version"
 require "lib/cogbot/utils"
 
@@ -16,11 +17,17 @@ module Cogbot
     bot = Cinch::Bot.new do
       configure do |c|
         c.server = config['main']['server']
+        c.ssl.use = ( config['main']['ssl'] == 'true' )
         c.nick = config['main']['nick']
+        c.user = config['main']['nick']
+        c.realname = config['main']['nick']
         c.channels = config['main']['channels']
         c.options = { 'cogconf' => config }
         c.plugins.prefix = config['main']['prefix']
         c.plugins.plugins = plugins
+        #c.storage.backend = Cinch::Storage::YAML
+        #c.storage.basedir = File.join(ROOT_DIR,"yaml")
+        #c.storage.autosave = true
       end
       on :message, "hi" do |m|
         m.reply "Hello, #{m.user.nick}"
