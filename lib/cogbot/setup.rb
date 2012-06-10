@@ -60,7 +60,7 @@ module Cogbot
       print "#{st}What plugins will be enabled for #{main['nick']} ?#{en} [#{default['main']['plugins'].join(',')}] "
       main['plugins'] = setlist default['main']['plugins']
 
-      File.open(CONFIG_FILE,'w') { |f| YAML::dump(main,f) }
+      File.open(CONFIG_FILE,'w') { |f| YAML::dump({'main' => main},f) }
       return main
     end
   end
