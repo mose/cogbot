@@ -6,7 +6,13 @@ require "lib/cogbot/utils"
 module Cogbot
 
   def self.makebot
-    config = YAML::load_file(CONFIG_FILE)
+    config = {}
+    begin
+      config = YAML::load_file(CONFIG_FILE)
+    rescue Exception => e
+      load "lib/cogbot/setup.rb"
+      config['main'] = Cogbot::Setup.init
+    end
     plugins = Array.new
     config['main']['plugins'].each do |p|
       if File.exists?(File.join(ROOT_DIR,'plugins',"#{p}.rb"))

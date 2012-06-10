@@ -1,5 +1,7 @@
 main:
   server: 'irc.freenode.net'
+  port: '6667'
+  ssl: false
   nick: 'cogbot'
   channels:
   - '#cinch-bots'
