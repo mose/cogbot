@@ -7,7 +7,7 @@ main:
   - '#cinch-bots'
   prefix: '.'
   plugins:
-  - 'plugins'
+  - 'manager'
   - 'google'
   - 'dice'
   - 'urban'

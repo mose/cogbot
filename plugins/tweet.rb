@@ -1,12 +1,14 @@
 require 'twitter'
 
-class Tweet
-  include Cinch::Plugin
+module Cinch
+  module Plugins
+    class Tweet
+      include Cinch::Plugin
 
-  match /t ?([^ ]*)?( ?.*)/
+      match /t ?([^ ]*)?( ?.*)/
 
-  set :plugin_name, 'tweet'
-  set :help, <<EOT
+      set :plugin_name, 'tweet'
+      set :help, <<EOT
 Tweet makes the bot can query twittter API
 .t search <term> : searches the public timelines
 EOT
@@ -20,32 +22,33 @@ EOT
   end
 =end
 
-  def new(bot)
-    @bot = bot
-  end
-
-  def exec(command,args)
-    back = ''
-    #back += "command: #{command} / args: #{args}\n"
-    begin
-      case command
-      when 'search'
-        Twitter.search(args, { :lang => 'en', :rpp => '3' }).each do|status|
-          back += status.full_text + "\n"
-        end
-      else
-        back += Twitter.send(command,args.split(','))
+      def new(bot)
+        @bot = bot
       end
-    rescue Exception => e
-      back += "Bad request\n"
-      back += e.inspect
+
+      def exec(command,args)
+        back = ''
+        #back += "command: #{command} / args: #{args}\n"
+        begin
+          case command
+          when 'search'
+            Twitter.search(args, { :lang => 'en', :rpp => '3' }).each do|status|
+              back += status.full_text + "\n"
+            end
+          else
+            back += Twitter.send(command,args.split(','))
+          end
+        rescue Exception => e
+          back += "Bad request\n"
+          back += e.inspect
+        end
+        return back
+      end
+
+      def execute(m,command,args)
+        m.reply(exec(command,args.strip))
+      end
+
     end
-    return back
   end
-
-  def execute(m,command,args)
-    m.reply(exec(command,args.strip))
-  end
-
 end
-

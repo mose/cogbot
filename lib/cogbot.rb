@@ -17,7 +17,7 @@ module Cogbot
     config['main']['plugins'].each do |p|
       if File.exists?(File.join(ROOT_DIR,'plugins',"#{p}.rb"))
         require File.join(ROOT_DIR,'plugins',p)
-        plugins.push Object.const_get(p.camelize)
+        plugins.push Cinch::Plugins.const_get(p.camelize)
       end
     end
     bot = Cinch::Bot.new do
