@@ -27,6 +27,7 @@ EOT
           'last' => 'last',
           'free' => 'free -mol',
           'who' => 'w -shuo',
+          'f' => 'fortune',
           'uptime' => 'uptime'
         }
         if command == 'help'
@@ -38,8 +39,8 @@ EOT
             line += ' | grep ' + args.gsub(/;|&/,'')
           end
           line += '| head -5'
-          back = line + "\n"
-          back += `#{line}`
+          #back = line + "\n"
+          back = `#{line}`
           return back
         else
           return "Command #{command} not found"
