@@ -21,4 +21,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'json' # stackoverflow plugin
   gem.add_dependency 'yajl-ruby' # rubygems plugin
   gem.add_dependency 'fortune_gem' # fortune plugin
+  # gem.add_dependency 'goliath' # server feature
 end
