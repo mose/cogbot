@@ -6,7 +6,7 @@ module Cogbot
 
     def listen(m, json)
       bot.loggers.debug(json.inspect)
-      hash = Yajl::Parse.parse(json)
+      hash = Yajl::Parser.parse(json)
       config['main']['channels'].each do |channel|
         hash[:commits].each do |c|
           Channel(channel).send "[%s:%s] %s <%s>" % [
