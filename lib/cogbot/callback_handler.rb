@@ -2,7 +2,7 @@ module Cogbot
   class CallbackHandler
     include Cinch::Plugin
 
-    listen_to :api_callback
+    listen :api_callback
 
     def listen(m, json_in)
       json = StringIO.new(json_in)
