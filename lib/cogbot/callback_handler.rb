@@ -9,14 +9,12 @@ module Cogbot
       hash = Yajl::Parser.parse(URI.unescape(json[8..-1]))
       #@bot.config.options['cogconf']['main']['channels'].each do |channel|
       ['#cinch-bots'].each do |channel|
-        hash[:commits].each do |c|
-          Channel(channel).msg "[%s:%s] %s <%s>" % [
-            hash[:repository][:name],
-            c[:author][:name],
-            c[:message],
-            c[:url]
-          ]
-        end
+        Channel(channel).msg "[%s:%s] %s <%s>" % [
+          hash[:repository][:name],
+          hash[:pusher][:name],
+          hash[:head_commit][:message],
+          hash[:head_commit][:url]
+        ]
       end
     end
 
