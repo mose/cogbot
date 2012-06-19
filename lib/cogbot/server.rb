@@ -1,22 +1,22 @@
-require 'goliath'
+class Server < EM::Connection
+  include EM::HttpServer
 
-class Server < Goliath::API
-  use Goliath::Rack::Tracer             # log trace statistics
-  use Goliath::Rack::DefaultMimeType    # cleanup accepted media types
-  use Goliath::Rack::Render, 'json'     # auto-negotiate response format
-  use Goliath::Rack::Params             # parse & merge query and body parameters
-  use Goliath::Rack::Heartbeat          # respond to /status with 200, OK (monitoring, etc)
-  use Goliath::Rack::Validation::RequestMethod, %w(GET POST)           # allow GET and POST requests only
-
-  def process(params)
-    params
+  def initialize(bot)
+    @bot = bot
   end
 
-  def response(env)
-    headers = { 'Content-Type' => 'text/plain', 'X-Stream' => 'Goliath' }
-    [ 200, headers, process(env['params']) ]
+  def post_init
+    super
+    no_environment_strings
   end
 
+  def process_http_request
+    if @http_request_method == "POST"
+      @bot.dispatch(:api_callback, nil, @http_post_content)
+    end
+
+    response = EM::DelegatedHttpResponse.new(self)
+    response.status = 200
+    response.send_response
+  end
 end
-
-

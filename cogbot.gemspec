@@ -16,10 +16,14 @@ Gem::Specification.new do |gem|
   gem.version       = Cogbot::VERSION
 
   gem.add_dependency 'cinch'
+  gem.add_dependency "thor"
+  gem.add_dependency "eventmachine"
+  gem.add_dependency "eventmachine_httpserver"
+  gem.add_dependency 'nokogiri'
+  gem.add_dependency "daemons"
+
   gem.add_dependency 'twitter'  # twitter plugin
-  gem.add_dependency 'nokogiri' # google plugin
   gem.add_dependency 'json' # stackoverflow plugin
   gem.add_dependency 'yajl-ruby' # rubygems plugin
   gem.add_dependency 'fortune_gem' # fortune plugin
-  # gem.add_dependency 'goliath' # server feature
 end
