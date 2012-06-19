@@ -12,7 +12,7 @@ class Server < EM::Connection
 
   def process_http_request
     if @http_request_method == "POST"
-      @bot.dispatch(:api_callback, nil, @http_post_content)
+      @bot.handlers.dispatch(:api_callback, nil, @http_post_content)
     end
 
     response = EM::DelegatedHttpResponse.new(self)
