@@ -5,6 +5,7 @@ require 'nokogiri'
 require 'net/http'
 require 'daemons'
 require 'thor'
+require 'yajl'
 #require 'cinch/storage/yaml'
 require "lib/cogbot/version"
 require "lib/cogbot/utils"
