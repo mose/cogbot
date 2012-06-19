@@ -10,10 +10,10 @@ module Cogbot
       #@bot.config.options['cogconf']['main']['channels'].each do |channel|
       ['#cinch-bots'].each do |channel|
         Channel(channel).msg "[%s:%s] %s <%s>" % [
-          hash[:repository][:name],
-          hash[:pusher][:name],
-          hash[:head_commit][:message],
-          hash[:head_commit][:url]
+          hash['repository']['name'],
+          hash['pusher']['name'],
+          hash['head_commit']['message'],
+          hash['head_commit']['url']
         ]
       end
     end
