@@ -7,7 +7,7 @@ module Cogbot
     def listen(m, json)
       bot.loggers.debug(URI.unescape(json[8..-1]))
       hash = Yajl::Parser.parse(URI.unescape(json[8..-1]))
-      @bot.options.cogconf['main']['channels'].each do |channel|
+      @bot.config.options['cogconf']['main']['channels'].each do |channel|
         hash[:commits].each do |c|
           Channel(channel).msg "[%s:%s] %s <%s>" % [
             hash[:repository][:name],
