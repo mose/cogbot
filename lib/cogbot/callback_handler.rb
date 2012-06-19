@@ -4,11 +4,9 @@ module Cogbot
 
     listen_to :api_callback
 
-    def listen(m, json_in)
+    def listen(m, json)
       bot.loggers.debug(json.inspect)
-      json = StringIO.new(json_in)
-      parser = Yajl::Parser.new(:symbolize_keys => true)
-      hash = parser.parse(json)
+      hash = Yajl::Parse.parse(json)
       config['main']['channels'].each do |channel|
         hash[:commits].each do |c|
           Channel(channel).send "[%s:%s] %s <%s>" % [
