@@ -9,7 +9,7 @@ module Cogbot
       hash = Yajl::Parser.parse(URI.unescape(json[8..-1]))
       config['main']['channels'].each do |channel|
         hash[:commits].each do |c|
-          Channel(channel).send "[%s:%s] %s <%s>" % [
+          Channel(channel).msg "[%s:%s] %s <%s>" % [
             hash[:repository][:name],
             c[:author][:name],
             c[:message],
