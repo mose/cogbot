@@ -4,6 +4,7 @@ require 'evma_httpserver'
 require 'nokogiri'
 require 'net/http'
 require 'daemons'
+require 'thor'
 #require 'cinch/storage/yaml'
 require "lib/cogbot/version"
 require "lib/cogbot/utils"
@@ -25,13 +26,13 @@ module Cogbot
         load "lib/cogbot/setup.rb"
         config['main'] = Cogbot::Setup.init
       end
-      API_URI = URI.parse("https://#{config['server']['domain']}/api/v2/xml")
-      API_CACHE = { }
 
       # prepare daemon
       Daemons.daemonize(
         :app_name => 'cogbot',
         :dir_mode => :normal,
+        :log_dir => File.join('/', 'tmp'),
+        :log_output => true,
         :dir => File.join('/', 'tmp')
       )
 
@@ -88,8 +89,6 @@ module Cogbot
       pid = File.read(pid_file).to_i if File.exist?(pid_file)
       Process.kill('TERM', pid)
     end
-
-
 
   end
 end
