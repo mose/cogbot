@@ -5,6 +5,7 @@ module Cogbot
     listen_to :api_callback
 
     def listen(m, json_in)
+      bot.loggers.debug(json.inspect)
       json = StringIO.new(json_in)
       parser = Yajl::Parser.new(:symbolize_keys => true)
       hash = parser.parse(json)
