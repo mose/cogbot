@@ -32,7 +32,7 @@ module Cogbot
       Daemons.daemonize(
         :app_name => 'cogbot',
         :dir_mode => :normal,
-        :log_dir => File.join('/', 'tmp'),
+        :log_dir => LOG_DIR,
         :log_output => true,
         :dir => File.join('/', 'tmp')
       )

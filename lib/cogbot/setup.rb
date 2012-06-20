@@ -35,7 +35,7 @@ module Cogbot
       default = YAML::load_file(File.join(ROOT_DIR,'config','cogbot.yml.defaults'))
       main = {}
       puts "You don't have a configuration file yet,"
-      puts "let's make one in ~/.cogbot.yml"
+      puts "let's make one in ~/.cogbot/config.yml"
       puts
       puts "Please answer those few questions"
 
@@ -60,6 +60,8 @@ module Cogbot
       print "#{st}What plugins will be enabled for #{main['nick']} ?#{en} [#{default['main']['plugins'].join(',')}] "
       main['plugins'] = setlist default['main']['plugins']
 
+      Dir.mkdir(File.basename(CONFIG_FILE), 0700) unless File.directory?(File.basename(CONFIG_FILE))
+      Dir.mkdir(File.join(LOG_DIR, 0700) unless File.directory?(LOG_DIR)
       File.open(CONFIG_FILE,'w') { |f| YAML::dump({'main' => main},f) }
       return main
     end
