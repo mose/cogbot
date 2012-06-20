@@ -10,7 +10,6 @@ require 'yajl'
 require "lib/cogbot/version"
 require "lib/cogbot/utils"
 require "lib/cogbot/server"
-require "lib/cogbot/callback_handler"
 
 module Cogbot
 
@@ -40,12 +39,14 @@ module Cogbot
       # checkout plugins
       plugins = []
       config['main']['plugins'].each do |p|
+        puts p
+        puts File.join(ROOT_DIR,'plugins',"#{p}.rb")
         if File.exists?(File.join(ROOT_DIR,'plugins',"#{p}.rb"))
+          puts p
           require File.join(ROOT_DIR,'plugins',p)
           plugins.push Cinch::Plugins.const_get(p.camelize)
         end
       end
-      plugins.push Cogbot::CallbackHandler
 
       # create bot
       bot = Cinch::Bot.new do
@@ -67,6 +68,7 @@ module Cogbot
           m.reply "Hello, #{m.user.nick}"
         end
       end
+      bot.loggers.debug(plugins.inspect)
 
       Signal.trap('TERM') { EM.stop }
 
@@ -90,6 +92,12 @@ module Cogbot
       pid_file = File.join('/', 'tmp', 'cogbot.pid')
       pid = File.read(pid_file).to_i if File.exist?(pid_file)
       Process.kill('TERM', pid)
+    end
+
+    desc "restart", "restart cogbot"
+    def restart
+      stop
+      start
     end
 
   end
