@@ -88,7 +88,7 @@ module Cinch
 
       def set_option(m, plugin, option, value)
         begin
-          const = Cinch::Plugins.const_get(plugin.downcase.camalize)
+          const = Cinch::Plugins.const_get(plugin.downcase.camelize)
         rescue NameError
           m.reply "Could not set plugin option for #{plugin} because no matching class was found."
           return
