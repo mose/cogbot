@@ -16,9 +16,9 @@ module Cinch
         #['#dev'].each do |channel|
           hash['commits'].each do |c|
             files = ""
-            files += '[= ' + c['modified'].join(' ') + ' ] ' unless c['modified'].empty?
-            files += '[- ' + c['removed'].join(' ') + ' ] ' unless c['removed'].empty?
-            files += '[+ ' + c['added'].join(' ') + ' ] ' unless c['added'].empty?
+            files += '[= ' + short(c['modified']).join(' ') + ' ] ' unless c['modified'].empty?
+            files += '[- ' + short(c['removed']).join(' ') + ' ] ' unless c['removed'].empty?
+            files += '[+ ' + short(c['added']).join(' ') + ' ] ' unless c['added'].empty?
             Channel(channel).msg "%s@%s: %s %s" % [
               c['committer']['name'],
               hash['repository']['name'],
@@ -28,6 +28,11 @@ module Cinch
           end
         end
       end
+
+      def short(x)
+        x.map { |l| l.gsub(/([^\/]*)\//) { |s| s[0,1] + '/'} }
+      end
+
     end
   end
 end
