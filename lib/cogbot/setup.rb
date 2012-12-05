@@ -61,7 +61,7 @@ module Cogbot
       main['plugins'] = setlist default['main']['plugins']
 
       Dir.mkdir(File.basename(CONFIG_FILE), 0700) unless File.directory?(File.basename(CONFIG_FILE))
-      Dir.mkdir(File.join(LOG_DIR, 0700) unless File.directory?(LOG_DIR)
+      Dir.mkdir(File.join(LOG_DIR), 0700) unless File.directory?(LOG_DIR)
       File.open(CONFIG_FILE,'w') { |f| YAML::dump({'main' => main},f) }
       return main
     end

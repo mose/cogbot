@@ -20,3 +20,7 @@ tweet:
   consumer_secret: ''
   oauth_token: ''
   oauth_token_secret: ''
+redmine:
+  api_key: ''
+  url: ''
+  project: ''
