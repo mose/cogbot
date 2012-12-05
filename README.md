@@ -4,22 +4,14 @@ Cogbot is an irc bot written in ruby based on [Cinch bot framework](https://gith
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'cogbot'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install cogbot
 
 ## Usage
 
 Edit the file config/cogbot.yml
-launch cogbot
+launch cogbot:
+
+    cogbot start
 
 ## Contributing
 
