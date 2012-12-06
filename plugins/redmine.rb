@@ -33,12 +33,9 @@ EOT
             newones.each do |i|
               @issues.push i
               @bot.config.options['cogconf']['main']['channels'].each do |channel|
-                Channel(channel).msg "[%s] >>> %s" % [
+                Channel(channel).msg "[%s] >>> %s - %s/issues/%s" % [
                   @bot.config.options['cogconf']['redmine']['project'],
-                  subjs[i]
-                ]
-                Channel(channel).msg "[%s] --- %s/issues/%s" % [
-                  @bot.config.options['cogconf']['redmine']['project'],
+                  subjs[i],
                   @bot.config.options['cogconf']['redmine']['url'],
                   i
                 ]
