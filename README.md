@@ -35,8 +35,13 @@ When this is done you can launch again and it will just run according to your co
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+## Todo
+
+* write some documentation of the commands of plugins
+* write tests
+
 ## Licence
 
 MIT license
 
-Copyright (c) 2012-13 mose
+Copyright (c) 2012-13 mose at Code Green

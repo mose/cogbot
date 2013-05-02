@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["mose"]
   gem.email         = ["mose@mose.com"]
   gem.description   = 'Irc bot based on Cinch'
-  gem.summary       = 'Yet another irc bot, more a toy and a sandbox than a real product at this stage'
+  gem.summary       = 'Yet another irc bot, focused on helping development teams.'
   gem.homepage      = "https://github.com/mose/cogbot"
 
   gem.files         = `git ls-files`.split($\)
