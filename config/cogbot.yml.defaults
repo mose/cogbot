@@ -12,9 +12,6 @@ main:
   - 'dice'
   - 'urban'
   - 'tweet'
-config:
-  dir: '~/.cogbot'
-  logs: '~/.cogbot/logs'
 server:
   ip: 127.0.0.1
   port: 9090
