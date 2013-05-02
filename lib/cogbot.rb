@@ -74,13 +74,15 @@ module Cogbot
 
       EM.run do
         EM.defer { bot.start }
-        EM.add_timer(3) do
-          EM.start_server(
-            config['server']['ip'],
-            config['server']['port'],
-            Server,
-            bot
-          )
+        if config['server']
+          EM.add_timer(3) do
+            EM.start_server(
+              config['server']['ip'],
+              config['server']['port'],
+              Server,
+              bot
+            )
+          end
         end
       end
 

@@ -26,4 +26,13 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'json' # stackoverflow plugin
   gem.add_dependency 'yajl-ruby' # rubygems plugin
   gem.add_dependency 'fortune_gem' # fortune plugin
+
+  gem.add_development_dependency 'awesome_print'
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'minitest'
+  gem.add_development_dependency 'minitest-ci'
+  gem.add_development_dependency 'pry'
+  gem.add_development_dependency 'simplecov'
+  gem.add_development_dependency 'simplecov-rcov'
+  gem.add_development_dependency 'flog'
 end

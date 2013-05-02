@@ -60,9 +60,9 @@ module Cogbot
       print "#{st}What plugins will be enabled for #{main['nick']} ?#{en} [#{default['main']['plugins'].join(',')}] "
       main['plugins'] = setlist default['main']['plugins']
 
-      Dir.mkdir(File.basename(CONFIG_FILE), 0700) unless File.directory?(File.basename(CONFIG_FILE))
-      Dir.mkdir(File.join(LOG_DIR), 0700) unless File.directory?(LOG_DIR)
-      File.open(CONFIG_FILE,'w') { |f| YAML::dump({'main' => main},f) }
+      FileUtils.mkdir_p(CONFIG_DIR) unless File.directory?(CONFIG_DIR)
+      FileUtils.mkdir_p(LOG_DIR) unless File.directory?(LOG_DIR)
+      File.open(CONFIG_FILE,'w') { |f| YAML::dump({ 'main' => main }, f) }
       return main
     end
   end
