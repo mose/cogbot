@@ -7,6 +7,7 @@ Gem::Specification.new do |gem|
   gem.description   = 'Irc bot based on Cinch'
   gem.summary       = 'Yet another irc bot, focused on helping development teams.'
   gem.homepage      = "https://github.com/mose/cogbot"
+  gem.license       = "MIT"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = ['cogbot']
