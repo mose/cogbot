@@ -16,17 +16,17 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Cogbot::VERSION
 
-  gem.add_dependency 'cinch'
-  gem.add_dependency "thor"
-  gem.add_dependency "eventmachine"
-  gem.add_dependency "eventmachine_httpserver"
-  gem.add_dependency 'nokogiri'
-  gem.add_dependency "daemons"
+  gem.add_dependency 'cinch', '~> 2.0.6'
+  gem.add_dependency "thor", '~> 0.18.1'
+  gem.add_dependency "eventmachine", '~> 1.0.3'
+  gem.add_dependency "eventmachine_httpserver", '~> 0.2.1'
+  gem.add_dependency 'nokogiri', '~> 1.6.0'
+  gem.add_dependency "daemons", '~> 1.1.9'
 
-  gem.add_dependency 'twitter'  # twitter plugin
-  gem.add_dependency 'json' # stackoverflow plugin
-  gem.add_dependency 'yajl-ruby' # rubygems plugin
-  gem.add_dependency 'fortune_gem' # fortune plugin
+  gem.add_dependency 'twitter', '~> 4.8.1'  # twitter plugin
+  gem.add_dependency 'json', '~> 1.8.0' # stackoverflow plugin
+  gem.add_dependency 'yajl-ruby', '~> 1.1.0' # rubygems plugin
+  gem.add_dependency 'fortune_gem', '~> 0.0.6' # fortune plugin
 
   gem.add_development_dependency 'awesome_print'
   gem.add_development_dependency 'rake'
