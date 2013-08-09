@@ -1,23 +1,23 @@
 PATH
   remote: .
   specs:
-    cogbot (0.0.2)
-      cinch
-      daemons
-      eventmachine
-      eventmachine_httpserver
-      fortune_gem
-      json
-      nokogiri
-      thor
-      twitter
-      yajl-ruby
+    cogbot (0.0.3)
+      cinch (~> 2.0.6)
+      daemons (~> 1.1.9)
+      eventmachine (~> 1.0.3)
+      eventmachine_httpserver (~> 0.2.1)
+      fortune_gem (~> 0.0.6)
+      json (~> 1.8.0)
+      nokogiri (~> 1.6.0)
+      thor (~> 0.18.1)
+      twitter (~> 4.8.1)
+      yajl-ruby (~> 1.1.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     awesome_print (1.1.0)
-    cinch (2.0.6)
+    cinch (2.0.7)
     coderay (1.0.9)
     daemons (1.1.9)
     eventmachine (1.0.3)
