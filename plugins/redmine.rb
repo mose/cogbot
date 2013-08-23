@@ -41,7 +41,7 @@ EOT
                 ]
               end
             end
-            @issues = @issues[0..50]
+            @issues = @issues[0..500]
           end
         end
         # puts "redmine: done #{newones.count} new issues, #{@issues.count} cached"
