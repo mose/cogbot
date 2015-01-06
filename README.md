@@ -2,12 +2,12 @@
 
 Cogbot is an irc bot written in ruby based on [Cinch bot framework](https://github.com/cinchrb/cinch).
 
-It has been in servvice at [Code Green](http://codegreenit.com) since summer 2012 and his stability
-is unquestionned. It is used with a collection of custom plugins that are focused on helping a coding
+It has been in service at [Code Green](http://codegreenit.com) from 2012 to 2013 and his stability
+was unquestionned. It is used with a collection of custom plugins that are focused on helping a coding
 team that uses irc as a main shared communication space:
 
 * git notifications pushed on the channel
-* redmine issues polled from our redmine and announced
+* redmine issues polled from redmine and announced
 * commands to ask rubygems or stack overflow
 * the urban dictionary to make us laugh
 * and some other more or less used features
