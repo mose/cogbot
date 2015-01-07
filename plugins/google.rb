@@ -26,8 +26,7 @@ EOT
         title = res.text
         link = res.at('a')[:href]
         link.gsub!(/^.*q=(.*)&sa.*$/) { $1 }
-        desc = res.at("./following::div").children.first.text
-        CGI.unescape_html "#{title} - #{desc} (#{link})"
+        CGI.unescape_html "#{title} (#{link})"
       rescue
         "No results found"
       end
