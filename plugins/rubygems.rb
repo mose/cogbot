@@ -27,12 +27,14 @@ EOT
           else
             json = Yajl::Parser.parse(File.read(file))
           end
-          4.times do |it|
+          all = json.count > 4 ? 4 : json.count
+          all.times do |it|
             back += "#{json[it]['name']} : #{json[it]['homepage_uri']}\n"
           end
         rescue Exception => e
           p file.class
           back = "*** #{e.class}\n"
+          back += e.backtrace.join("\n")
           back += e.to_s
         end
         return back
