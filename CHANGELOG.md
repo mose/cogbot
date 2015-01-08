@@ -1,6 +1,8 @@
 Cogbot Changelog
 ===================
 
+## v0.1.1 - wip
+
 ## v0.1.0 - 2015-01-08
 - upgrade dependency to cinch 2.0.6 to 2.2.2
 - upgrade other gems as well
