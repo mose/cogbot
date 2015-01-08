@@ -5,7 +5,7 @@ module Cinch
     class Shorturl
       include Cinch::Plugin
 
-      match /(http:\/\/[^ ]*)/, :use_prefix => false
+      match /short (https?:\/\/[^ ]*)/
 
       set :plugin_name, 'shorturl'
       set :help, <<EOT

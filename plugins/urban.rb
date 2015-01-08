@@ -17,7 +17,7 @@ EOT
       def query(query)
         url = "http://www.urbandictionary.com/define.php?term=#{CGI.escape(query)}"
         begin
-          CGI.unescape_html Nokogiri::HTML(open(url)).at("div.definition").text.gsub(/\s+/, ' ')
+          CGI.unescape_html Nokogiri::HTML(open(url)).at("div.meaning").text.gsub(/\s+/, ' ')
         rescue
           "no result found"
         end
