@@ -17,18 +17,25 @@ EOT
   end
 
   def search(query)
-    url = "http://api.stackoverflow.com/docs/search#site=stackoverflow&sort=activity&intitle=#{CGI.escape(query)}"
-p url
-    res = JSON.parse(open(url))
-p res
-    res.items.each do |i|
-      title = i.title
-      link = i.link
-      desc = i.tags.join(', ')
+    url = "http://api.stackexchange.com/2.2/search?site=stackoverflow&pagesize=3&sort=activity&order=desc&intitle=#{CGI.escape(query)}"
+    puts url
+
+    resp = open(url, "Accept-Encoding" => "gzip,deflate")
+    gz = Zlib::GzipReader.new(StringIO.new(resp.string))
+    res = JSON.parse(gz.read)
+    if res['items'].count == 0
+      return "No results found."
     end
-    "#{title} - #{desc} (#{link})"
+    back = ""
+    res['items'].each do |i|
+      title = i['title']
+      link = i['link']
+      desc = i['tags'].join(', ')
+      back += "#{title} - #{desc} (#{link})\n"
+    end
+    back
   rescue
-    "No results found"
+    "Query error."
   end
 
   def execute(m, query)
