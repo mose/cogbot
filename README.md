@@ -44,4 +44,4 @@ When this is done you can launch again and it will just run according to your co
 
 MIT license
 
-Copyright (c) 2012-13 mose at Code Green
+Copyright (c) 2012-15 mose at mose
