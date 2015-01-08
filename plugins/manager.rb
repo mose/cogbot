@@ -23,7 +23,7 @@ module Cinch
 
         file_name = "#{ROOT_DIR}/plugins/#{mapping.downcase}.rb"
         unless File.exist?(file_name)
-          m.reply "Could not load #{plugin} because #{file_name} does not exist."
+          m.reply "Could not load #{plugin} because #{File.basename(file_name)} does not exist."
           return
         end
 
