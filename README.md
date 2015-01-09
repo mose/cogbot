@@ -27,6 +27,17 @@ At first launch:
 you will be prompted to create a configuration file in ~/.cogbot/cogbot.yml
 When this is done you can launch again and it will just run according to your configuration.
 
+## Development
+
+    git clone git@github.com:mose/cogbot.git
+    cd cogbot/
+    bundle install --path vendor
+    ruby -Ilib bin/cogbot start
+
+To reload plugins while developing, you can issue, on a channel where your bot is sitting:
+
+    .m reload myplugin
+
 ## Contributing
 
 1. Fork it
