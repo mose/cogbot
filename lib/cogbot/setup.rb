@@ -35,7 +35,7 @@ module Cogbot
       default = YAML::load_file(File.join(ROOT_DIR,'config','cogbot.yml.defaults'))
       main = {}
       puts "You don't have a configuration file yet,"
-      puts "let's make one in ~/.cogbot/config.yml"
+      puts "let's make one in ~/.cogbot/cogbot.yml"
       puts
       puts "Please answer those few questions"
 

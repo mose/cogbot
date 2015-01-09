@@ -32,7 +32,7 @@ When this is done you can launch again and it will just run according to your co
     git clone git@github.com:mose/cogbot.git
     cd cogbot/
     bundle install --path vendor
-    ruby -Ilib bin/cogbot start
+    bundle exec ruby -Ilib bin/cogbot start
 
 To reload plugins while developing, you can issue, on a channel where your bot is sitting:
 
