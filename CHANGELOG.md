@@ -2,6 +2,8 @@ Cogbot Changelog
 ===================
 
 ### v0.1.2 - wip
+- add link to status on twitter plugin search results
+- add age of status in twitter plugin
 
 ### v0.1.1 - 2015-01-28
 - avoid disclose local path in nmanager plugin when plugin not found

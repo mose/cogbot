@@ -26,6 +26,25 @@ EOT
         end
       end
 
+      def ago(timestamp)
+        now = Time.now.utc
+        timespent = now - timestamp
+        case timespent
+        when 0..60
+          "#{round(timespent)}s ago"
+        when 61..3600
+          "#{(timespent/60).floor}m ago"
+        when 3601..86400
+          "#{(timespent/3600).floor}h ago"
+        when 86401..2592000
+          "#{floor(timespent/86400).floor}d ago"
+        when 2592001..31536000
+          "#{(timespent/2592000).floor} month ago"
+        else
+          "more than one year ago"
+        end
+      end
+
       def new(bot)
         @bot = bot
       end
@@ -39,7 +58,8 @@ EOT
             client.search(args).take(3).each do |status|
               back += Format(:bold, :underline, :yellow, "@#{status.user.screen_name}") 
               back += " #{status.text.gsub(/\n/,' ')}"
-              back += " (https://twitter.com/#{status.user.screen_name}/status/#{status.id})"
+              back += " (#{ago(status.created_at)}"
+              back += " https://twitter.com/#{status.user.screen_name}/status/#{status.id})"
               back += "\n"
             end
           else
