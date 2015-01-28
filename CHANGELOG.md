@@ -1,7 +1,7 @@
 Cogbot Changelog
 ===================
 
-## v0.1.1 - wip
+## v0.1.1 - 2015-01-28
 - avoid disclose local path in nmanager plugin when plugin not found
 - fix setup message config.yaml to cogbot.yaml
 
