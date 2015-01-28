@@ -37,7 +37,10 @@ EOT
           case command
           when 'search'
             client.search(args).take(3).each do |status|
-              back += Format(:bold, :underline, :yellow, "@#{status.user.screen_name}") + " " + status.text + "\n"
+              back += Format(:bold, :underline, :yellow, "@#{status.user.screen_name}") 
+              back += " #{status.text.gsub(/\n/,' ')}"
+              back += " (https://twitter.com/#{status.user.screen_name}/status/#{status.id})"
+              back += "\n"
             end
           else
             back += "Usage: .t search <term> : searches the public timelines"
