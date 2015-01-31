@@ -10,24 +10,46 @@ module Cinch
       listen_to :api_callback
 
       def listen(m, json)
-        hash = Yajl::Parser.parse(URI.unescape(json[8..-1]))
+        hash = Yajl::Parser.parse(URI.unescape(json))
         bot.loggers.debug(hash.inspect)
-        @bot.config.options['cogconf']['main']['channels'].each do |channel|
-          #['#dev'].each do |channel|
+        if  @bot.config.options['cogconf']['trello']
+        @bot.config.options['cogconf']['trello']['announce'].each do |channel|
           action = hash['action']['type']
-          author = hash['action']['memberCreator']['username']
-          board = hash['action']['data']['board']['name']
-          list = hash['action']['data']['list']['name']
-          cardlink = hash['action']['data']['card']['shortLink']
-          cardname = hash['action']['data']['card']['name']
-          Channel(channel).msg "[%s] %s %s in %s: " % [
-            board,
-            author,
-            action,
-            list,
-            cardname,
-            link(cardlink)
+	  case action
+	  when 'createCard'
+          Channel(channel).msg "%s %s created in %s: %s %s" % [
+            Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
+            Format(:aqua, hash['action']['memberCreator']['username']),
+            Format(:orange, hash['action']['data']['list']['name']),
+            hash['action']['data']['card']['name'],
+            Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
           ]
+	  when 'updateCard'
+          Channel(channel).msg "%s %s moved in %s: %s %s" % [
+            Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
+            Format(:aqua, hash['action']['memberCreator']['username']),
+            Format(:orange, hash['action']['data']['list']['name']),
+            hash['action']['data']['card']['name'],
+            Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
+          ]
+	  when 'addLabelToCard'
+          Channel(channel).msg "%s %s labelled as %s: %s %s" % [
+            Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
+            Format(:aqua, hash['action']['memberCreator']['username']),
+            Format(:green, hash['action']['data']['label']['name']),
+            hash['action']['data']['card']['name'],
+            Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
+          ]
+	  when 'removeLabelFromCard'
+          Channel(channel).msg "%s %s unlabelled as %s: %s %s" % [
+            Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
+            Format(:aqua, hash['action']['memberCreator']['username']),
+            Format(:grey, hash['action']['data']['label']['name']),
+            hash['action']['data']['card']['name'],
+            Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
+          ]
+	  end
+        end
         end
       end
 
