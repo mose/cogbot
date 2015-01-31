@@ -10,9 +10,12 @@ team that uses irc as a main shared communication space:
 
 * git notifications pushed on the channel
 * redmine issues polled from redmine and announced
-* commands to ask rubygems or stack overflow
+* commands to ask google, rubygems or stack overflow
 * the urban dictionary to make us laugh
+* a twitter search plugin
+* a trello webhooks listener
 * and some other more or less used features
+
 
 ## Installation
 
@@ -26,6 +29,35 @@ At first launch:
 
 you will be prompted to create a configuration file in ~/.cogbot/cogbot.yml
 When this is done you can launch again and it will just run according to your configuration.
+
+## Configuration
+
+Some plugins require extra config parameters:
+
+Git and trello webhook listeners use a small eventmachine http server, which is only launched if the configuration is present:
+
+    server:
+      ip: x.x.x.x
+      port: xxxxx
+
+Twitter plugin requires to have credentials set:
+
+    tweet:
+      consumer_key: "xxx"
+      consumer_secret: "xxx"
+      access_token: "xxx"
+      access_token_secret: "xxx"
+
+Trello plugin has some config too, for knowing where to announce the trello changes. The webhook has to be setup independantly, it's quite easy to declare by using postman.
+
+    trello:
+      announce:
+      - "#trello-announces"
+
+## Todo
+
+- document each plugin
+- add multi-entrypoints system for webhooks listener
 
 ## Development
 
