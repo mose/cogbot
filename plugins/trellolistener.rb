@@ -48,6 +48,15 @@ module Cinch
             hash['action']['data']['card']['name'],
             Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
           ]
+	  when 'commentCard'
+          Channel(channel).msg "%s %s commented on \"%s\" in %s: %s %s" % [
+            Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
+            Format(:aqua, hash['action']['memberCreator']['username']),
+            truncate(hash['action']['data']['card']['name']),
+            Format(:orange, hash['action']['data']['list']['name']),
+            truncate(hash['action']['data']['text']),
+            Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
+          ]
 	  end
         end
         end
@@ -55,6 +64,21 @@ module Cinch
 
       def link(x)
         "https://trello.com/c/#{x}"
+      end
+
+      def truncate(content, limit=50)
+        message = ''
+        words = content.gsub(/[\s\n]+/," ").split(" ")
+        while words.count > 0
+           word = words.shift
+          if (message.size + word.size + 2) > limit
+            message << ' …'
+            words.clear
+          else
+            message << " #{word}"
+          end
+        end
+        message.strip
       end
 
     end
