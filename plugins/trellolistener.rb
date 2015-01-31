@@ -25,6 +25,8 @@ module Cinch
                 Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
               ]
             when 'updateCard'
+              if hash['action']['data']['old']
+                 if hash['action']['data']['old']['pos']
               Channel(channel).msg "%s %s moved in %s: %s %s" % [
                 Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
                 Format(:aqua, hash['action']['memberCreator']['username']),
@@ -32,6 +34,35 @@ module Cinch
                 truncate(hash['action']['data']['card']['name']),
                 Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
               ]
+                 elsif hash['action']['data']['old']['desc']
+              Channel(channel).msg "%s %s changed desc on \"%s\" in %s to \"%s\" %s" % [
+                Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
+                Format(:aqua, hash['action']['memberCreator']['username']),
+                truncate(hash['action']['data']['card']['name']),
+                Format(:orange, hash['action']['data']['list']['name']),
+                truncate(hash['action']['data']['card']['desc']),
+                Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
+              ]
+                 elsif hash['action']['data']['old']['closed'] != nil
+                   if hash['action']['data']['card']['closed']
+              Channel(channel).msg "%s %s archived \"%s\" in %s %s" % [
+                Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
+                Format(:aqua, hash['action']['memberCreator']['username']),
+                truncate(hash['action']['data']['card']['name']),
+                Format(:orange, hash['action']['data']['list']['name']),
+                Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
+              ]
+                   else
+              Channel(channel).msg "%s %s restored \"%s\" in %s %s" % [
+                Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
+                Format(:aqua, hash['action']['memberCreator']['username']),
+                truncate(hash['action']['data']['card']['name']),
+                Format(:orange, hash['action']['data']['list']['name']),
+                Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
+              ]
+                   end
+                 end
+              end
             when 'addLabelToCard'
               Channel(channel).msg "%s %s labelled as %s: %s %s" % [
                 Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
