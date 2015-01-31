@@ -15,8 +15,8 @@ module Cinch
         if  @bot.config.options['cogconf']['trello']
           @bot.config.options['cogconf']['trello']['announce'].each do |channel|
             action = hash['action']['type']
-        	  case action
-        	  when 'createCard'
+            case action
+            when 'createCard'
               Channel(channel).msg "%s %s created in %s: %s %s" % [
                 Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
                 Format(:aqua, hash['action']['memberCreator']['username']),
@@ -24,7 +24,7 @@ module Cinch
                 truncate(hash['action']['data']['card']['name']),
                 Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
               ]
-        	  when 'updateCard'
+            when 'updateCard'
               Channel(channel).msg "%s %s moved in %s: %s %s" % [
                 Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
                 Format(:aqua, hash['action']['memberCreator']['username']),
@@ -32,7 +32,7 @@ module Cinch
                 truncate(hash['action']['data']['card']['name']),
                 Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
               ]
-        	  when 'addLabelToCard'
+            when 'addLabelToCard'
               Channel(channel).msg "%s %s labelled as %s: %s %s" % [
                 Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
                 Format(:aqua, hash['action']['memberCreator']['username']),
@@ -40,7 +40,7 @@ module Cinch
                 truncate(hash['action']['data']['card']['name']),
                 Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
               ]
-        	  when 'removeLabelFromCard'
+            when 'removeLabelFromCard'
               Channel(channel).msg "%s %s unlabelled as %s: %s %s" % [
                 Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
                 Format(:aqua, hash['action']['memberCreator']['username']),
@@ -48,7 +48,7 @@ module Cinch
                 truncate(hash['action']['data']['card']['name']),
                 Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
               ]
-        	  when 'commentCard'
+            when 'commentCard'
               Channel(channel).msg "%s %s commented on \"%s\" in %s: %s %s" % [
                 Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
                 Format(:aqua, hash['action']['memberCreator']['username']),
@@ -57,7 +57,7 @@ module Cinch
                 truncate(hash['action']['data']['text']),
                 Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
               ]
-        	  end
+            end
           end
         end
       end
