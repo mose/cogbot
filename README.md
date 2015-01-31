@@ -61,6 +61,8 @@ Trello plugin has some config too, for knowing where to announce the trello chan
 
 - document each plugin
 - add multi-entrypoints system for webhooks listener
+- add a users database
+- add a credentials system
 
 ## Development
 
