@@ -32,7 +32,7 @@ module Cinch
       end
 
       def link(x)
-        ""https://trello.com/c/#{x}"
+        "https://trello.com/c/#{x}"
       end
 
     end
