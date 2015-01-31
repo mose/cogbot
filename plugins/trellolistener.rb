@@ -17,81 +17,59 @@ module Cinch
             action = hash['action']['type']
             case action
             when 'createCard'
-              Channel(channel).msg "%s %s created in %s: %s %s" % [
-                Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
-                Format(:aqua, hash['action']['memberCreator']['username']),
-                Format(:orange, hash['action']['data']['list']['name']),
+              message(channel, hash, "created \"%s\" in %s" % [
                 truncate(hash['action']['data']['card']['name']),
-                Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
+                Format(:orange, hash['action']['data']['list']['name']),
               ]
             when 'updateCard'
               if hash['action']['data']['old']
-                 if hash['action']['data']['old']['pos']
-              Channel(channel).msg "%s %s moved in %s: %s %s" % [
-                Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
-                Format(:aqua, hash['action']['memberCreator']['username']),
-                Format(:orange, hash['action']['data']['list']['name']),
-                truncate(hash['action']['data']['card']['name']),
-                Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
-              ]
-                 elsif hash['action']['data']['old']['desc']
-              Channel(channel).msg "%s %s changed desc on \"%s\" in %s to \"%s\" %s" % [
-                Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
-                Format(:aqua, hash['action']['memberCreator']['username']),
-                truncate(hash['action']['data']['card']['name']),
-                Format(:orange, hash['action']['data']['list']['name']),
-                truncate(hash['action']['data']['card']['desc']),
-                Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
-              ]
-                 elsif hash['action']['data']['old']['closed'] != nil
-                   if hash['action']['data']['card']['closed']
-              Channel(channel).msg "%s %s archived \"%s\" in %s %s" % [
-                Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
-                Format(:aqua, hash['action']['memberCreator']['username']),
-                truncate(hash['action']['data']['card']['name']),
-                Format(:orange, hash['action']['data']['list']['name']),
-                Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
-              ]
-                   else
-              Channel(channel).msg "%s %s restored \"%s\" in %s %s" % [
-                Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
-                Format(:aqua, hash['action']['memberCreator']['username']),
-                truncate(hash['action']['data']['card']['name']),
-                Format(:orange, hash['action']['data']['list']['name']),
-                Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
-              ]
-                   end
-                 end
+                if hash['action']['data']['old']['pos']
+                  message(channel, hash, "moved \"%s\" in %s" % [
+                    truncate(hash['action']['data']['card']['name']),
+                    Format(:orange, hash['action']['data']['list']['name'])
+                  ]
+                elsif hash['action']['data']['old']['desc']
+                  message(channel, hash, "changed desc on \"%s\" in %s to \"%s\"" % [
+                    truncate(hash['action']['data']['card']['name']),
+                    Format(:orange, hash['action']['data']['list']['name']),
+                    truncate(hash['action']['data']['card']['desc'])
+                  ]
+                elsif hash['action']['data']['old']['closed'] != nil
+                  if hash['action']['data']['card']['closed']
+                    message(channel, hash, "archived \"%s\" from %s" % [
+                      truncate(hash['action']['data']['card']['name']),
+                      Format(:orange, hash['action']['data']['list']['name'])
+                    ]
+                  else
+                    message(channel, hash, "restored \"%s\" in %s" % [
+                      truncate(hash['action']['data']['card']['name']),
+                      Format(:orange, hash['action']['data']['list']['name'])
+                    ]
+                  end
+                end
               end
             when 'addLabelToCard'
-              Channel(channel).msg "%s %s labelled as %s: %s %s" % [
-                Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
-                Format(:aqua, hash['action']['memberCreator']['username']),
-                Format(:green, hash['action']['data']['label']['name']),
+              message(channel, hash, "labelled \"%s\" as %s" % [
                 truncate(hash['action']['data']['card']['name']),
-                Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
-              ]
+                Format(:green, hash['action']['data']['label']['name'])
+              ])
             when 'removeLabelFromCard'
-              Channel(channel).msg "%s %s unlabelled as %s: %s %s" % [
-                Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
-                Format(:aqua, hash['action']['memberCreator']['username']),
-                Format(:grey, hash['action']['data']['label']['name']),
+              message(channel, hash, "unlabelled \"%s\" as %s" % [
                 truncate(hash['action']['data']['card']['name']),
-                Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
-              ]
+                Format(:grey, hash['action']['data']['label']['name'])
+              ])
             when 'commentCard'
-              Channel(channel).msg "%s %s commented on \"%s\" in %s: %s %s" % [
-                Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
-                Format(:aqua, hash['action']['memberCreator']['username']),
+              message(channel, hash, "commented on \"%s\" in %s: %s" % [
                 truncate(hash['action']['data']['card']['name']),
                 Format(:orange, hash['action']['data']['list']['name']),
-                truncate(hash['action']['data']['text']),
-                Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
-              ]
+                truncate(hash['action']['data']['text'])
+              ])
             end
           end
         end
       end
+
+    private
 
       def link(x)
         "https://trello.com/c/#{x}"
@@ -110,6 +88,15 @@ module Cinch
           end
         end
         message.strip
+      end
+
+      def message(channel, hash, msg)
+        Channel(channel).msg "%s %s %s %s" % [
+          Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
+          Format(:aqua, hash['action']['memberCreator']['username']),
+          msg,
+          Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
+        ]
       end
 
     end
