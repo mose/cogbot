@@ -7,7 +7,7 @@ module Cinch
 
       set :plugin_name, 'gitlistener'
 
-      listen_to :api_callback
+      listen_to :http_gitlistener
 
       def listen(m, json)
         hash = Yajl::Parser.parse(URI.unescape(json[8..-1]))

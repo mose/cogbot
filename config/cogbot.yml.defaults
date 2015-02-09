@@ -24,3 +24,11 @@ redmine:
   api_key: ''
   url: ''
   project: ''
+trello:
+  announce:
+  - 
+    channel: "#trello"
+    board: "General"
+  - 
+    channel: "#trello-dev"
+    board: "Dev"
