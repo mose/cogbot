@@ -25,7 +25,7 @@ module Cinch
                 ])
               when 'addMemberToCard'
                 message(channel, hash, "added %s to \"%s\" in %s" % [
-                  Format(:aqua, hash['action']['member']['username']),
+                  Format(:aqua, hash['action']['data']['member']['username']),
                   truncate(hash['action']['data']['card']['name']),
                   Format(:orange, hash['action']['data']['list']['name'])
                 ])
