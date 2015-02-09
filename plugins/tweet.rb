@@ -37,7 +37,7 @@ EOT
         when 3601..86400
           "#{(timespent/3600).floor}h ago"
         when 86401..2592000
-          "#{floor(timespent/86400).floor}d ago"
+          "#{(timespent/86400).floor}d ago"
         when 2592001..31536000
           "#{(timespent/2592000).floor} month ago"
         else
