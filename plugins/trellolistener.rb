@@ -52,9 +52,13 @@ puts action
                     end
                   else
                     puts "---- no known old ----" 
+                    bot.loggers.debug(hash.inspect)
+                    puts "---- / no known old ----" 
                   end
                 else
                   puts "---- no old ----" 
+                  bot.loggers.debug(hash.inspect)
+                  puts "---- / no old ----" 
                 end
               when 'addLabelToCard'
                 message(channel, hash, "labelled \"%s\" as %s" % [
@@ -72,6 +76,10 @@ puts action
                   Format(:orange, hash['action']['data']['list']['name']),
                   truncate(hash['action']['data']['text'])
                 ])
+              else
+                puts "------------- not yet implemented: #{action} ------"
+                bot.loggers.debug(hash.inspect)
+                puts "---------------------------------------------------"
               end
             end
           end
