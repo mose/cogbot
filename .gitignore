@@ -2,3 +2,5 @@
 .bundle
 config/cogbot.yml
 vendor/
+*.swp
+*.swo

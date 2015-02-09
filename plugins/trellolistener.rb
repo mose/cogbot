@@ -11,12 +11,14 @@ module Cinch
 
       def listen(m, json)
         hash = Yajl::Parser.parse(URI.unescape(json))
-        bot.loggers.debug(hash.inspect)
+        #bot.loggers.debug(hash.inspect)
         if  @bot.config.options['cogconf']['trello']
           @bot.config.options['cogconf']['trello']['announce'].each do |announce|
             if hash['action']['data']['board']['name'] == announce['board']
               channel = announce['channel']
               action = hash['action']['type']
+puts channel
+puts action
               case action
               when 'createCard'
                 message(channel, hash, "created \"%s\" in %s" % [
@@ -48,7 +50,11 @@ module Cinch
                         Format(:orange, hash['action']['data']['list']['name'])
                       ])
                     end
+                  else
+                    puts "---- no known old ----" 
                   end
+                else
+                  puts "---- no old ----" 
                 end
               when 'addLabelToCard'
                 message(channel, hash, "labelled \"%s\" as %s" % [
@@ -94,12 +100,16 @@ module Cinch
       end
 
       def message(channel, hash, msg)
-        Channel(channel).msg "%s %s %s %s" % [
+puts "----------------"
+puts channel
+puts msg
+puts "----------------"
+        Channel(channel).msg("%s %s %s %s" % [
           Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
           Format(:aqua, hash['action']['memberCreator']['username']),
           msg,
           Format(:grey, "(%s)" % link(hash['action']['data']['card']['shortLink']))
-        ]
+        ])
       end
 
     end
