@@ -19,32 +19,32 @@ module Cinch
             when 'createCard'
               message(channel, hash, "created \"%s\" in %s" % [
                 truncate(hash['action']['data']['card']['name']),
-                Format(:orange, hash['action']['data']['list']['name']),
-              ]
+                Format(:orange, hash['action']['data']['list']['name'])
+              ])
             when 'updateCard'
               if hash['action']['data']['old']
                 if hash['action']['data']['old']['pos']
                   message(channel, hash, "moved \"%s\" in %s" % [
                     truncate(hash['action']['data']['card']['name']),
                     Format(:orange, hash['action']['data']['list']['name'])
-                  ]
+                  ])
                 elsif hash['action']['data']['old']['desc']
                   message(channel, hash, "changed desc on \"%s\" in %s to \"%s\"" % [
                     truncate(hash['action']['data']['card']['name']),
                     Format(:orange, hash['action']['data']['list']['name']),
                     truncate(hash['action']['data']['card']['desc'])
-                  ]
+                  ])
                 elsif hash['action']['data']['old']['closed'] != nil
                   if hash['action']['data']['card']['closed']
                     message(channel, hash, "archived \"%s\" from %s" % [
                       truncate(hash['action']['data']['card']['name']),
                       Format(:orange, hash['action']['data']['list']['name'])
-                    ]
+                    ])
                   else
                     message(channel, hash, "restored \"%s\" in %s" % [
                       truncate(hash['action']['data']['card']['name']),
                       Format(:orange, hash['action']['data']['list']['name'])
-                    ]
+                    ])
                   end
                 end
               end
