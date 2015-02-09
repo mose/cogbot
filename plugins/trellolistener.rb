@@ -17,11 +17,15 @@ module Cinch
             if hash['action']['data']['board']['name'] == announce['board']
               channel = announce['channel']
               action = hash['action']['type']
-puts channel
-puts action
               case action
               when 'createCard'
                 message(channel, hash, "created \"%s\" in %s" % [
+                  truncate(hash['action']['data']['card']['name']),
+                  Format(:orange, hash['action']['data']['list']['name'])
+                ])
+              when 'addMemberToCard'
+                message(channel, hash, "added %s to \"%s\" in %s" % [
+                  Format(:aqua, hash['action']['member']['username']),
                   truncate(hash['action']['data']['card']['name']),
                   Format(:orange, hash['action']['data']['list']['name'])
                 ])
@@ -51,14 +55,14 @@ puts action
                       ])
                     end
                   else
-                    puts "---- no known old ----" 
+                    puts "---- no known old ----"
                     bot.loggers.debug(hash.inspect)
-                    puts "---- / no known old ----" 
+                    puts "---- / no known old ----"
                   end
                 else
-                  puts "---- no old ----" 
+                  puts "---- no old ----"
                   bot.loggers.debug(hash.inspect)
-                  puts "---- / no old ----" 
+                  puts "---- / no old ----"
                 end
               when 'addLabelToCard'
                 message(channel, hash, "labelled \"%s\" as %s" % [
@@ -78,7 +82,7 @@ puts action
                 ])
               else
                 puts "------------- not yet implemented: #{action} ------"
-                bot.loggers.debug(hash.inspect)
+                bot.loggers.debug(json)
                 puts "---------------------------------------------------"
               end
             end
@@ -108,11 +112,7 @@ puts action
       end
 
       def message(channel, hash, msg)
-puts "----------------"
-puts channel
-puts msg
-puts "----------------"
-        Channel(channel).msg("%s %s %s %s" % [
+        Channel(channel).send("%s %s %s %s" % [
           Format(:yellow, "[%s]" % hash['action']['data']['board']['name']),
           Format(:aqua, hash['action']['memberCreator']['username']),
           msg,
