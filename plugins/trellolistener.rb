@@ -24,11 +24,15 @@ module Cinch
                   Format(:orange, hash['action']['data']['list']['name'])
                 ])
               when 'addMemberToCard'
-                message(channel, hash, "added %s to \"%s\" in %s" % [
-                  Format(:aqua, hash['action']['data']['member']['username']),
-                  truncate(hash['action']['data']['card']['name']),
-                  Format(:orange, hash['action']['data']['list']['name'])
-                ])
+                message(channel, hash, "added %s to \"%s\"" % [
+                  Format(:aqua, hash['action']['member']['username']),
+                  truncate(hash['action']['data']['card']['name'])
+                ]) or puts json
+              when 'removeMemberFromCard'
+                message(channel, hash, "removed %s from \"%s\"" % [
+                  Format(:aqua, hash['action']['member']['username']),
+                  truncate(hash['action']['data']['card']['name'])
+                ]) or puts json
               when 'updateCard'
                 if hash['action']['data']['old']
                   if hash['action']['data']['old']['pos']
