@@ -59,20 +59,28 @@ module Cinch
                       ])
                     end
                   elsif hash['action']['data']['old'].has_key? 'due'
-                    date_new Date.parse(hash['action']['card']['due']).strftime("%a %-d %b")
-                    if hash['action']['data']['old']['due']
+                    if hash['action']['data']['card']['due'] && hash['action']['data']['old']['due']
+                      date_new = Date.parse(hash['action']['data']['card']['due']).strftime("%a %-d %b")
                       date_old = Date.parse(hash['action']['data']['old']['due']).strftime("%a %-d %b")
-                      message(channel, hash, "changed date on \"%s\" from %s to %s to \"%s\"" % [
+                      message(channel, hash, "changed date on \"%s\" in %s, from %s to %s" % [
                         truncate(hash['action']['data']['card']['name']),
+                        Format(:orange, hash['action']['data']['list']['name']),
                         Format(:yellow, date_old),
-                        Format(:yellow, date_new),
-                        truncate(hash['action']['data']['card']['desc'])
+                        Format(:yellow, date_new)
+                      ])
+                    elsif hash['action']['data']['card']['due']
+                      date_new = Date.parse(hash['action']['data']['card']['due']).strftime("%a %-d %b")
+                      message(channel, hash, "set date on \"%s\" in %s, to %s" % [
+                        truncate(hash['action']['data']['card']['name']),
+                        Format(:orange, hash['action']['data']['list']['name']),
+                        Format(:yellow, date_new)
                       ])
                     else
-                      message(channel, hash, "set date on \"%s\" to %s to \"%s\"" % [
+                      date_old = Date.parse(hash['action']['data']['old']['due']).strftime("%a %-d %b")
+                      message(channel, hash, "removed date on \"%s\" in %s, was \"%s\"" % [
                         truncate(hash['action']['data']['card']['name']),
-                        Format(:yellow, date_new),
-                        truncate(hash['action']['data']['card']['desc'])
+                        Format(:orange, hash['action']['data']['list']['name']),
+                        Format(:yellow, date_old)
                       ])
                     end
                   else
