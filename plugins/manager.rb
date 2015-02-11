@@ -11,17 +11,11 @@ module Cinch
       match(/m set (\S+) (\S+) (.+)$/, method: :set_option)
 
       def authorized(m, &block)
-	      if @bot.config.options['cogconf']['manager']['admin'].include? m.user.nick
-	       instance_eval(&block)
-	      else
+        if @bot.config.options['cogconf']['manager']['admin'].include? m.user.nick
+         instance_eval(&block)
+        else
           m.reply "Sorry, you don't have the right."
-	      end
-      end
-
-      def test(m)
-	authorized m do
-        	m.reply "passed."
-	end
+        end
       end
 
       def list_plugins(m)
@@ -118,7 +112,7 @@ module Cinch
 
           m.reply "Successfuly set option."
         end
-        
+
       end
     end
   end
