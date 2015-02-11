@@ -35,7 +35,7 @@ module Cinch
                 ]) or puts json
               when 'updateCard'
                 if hash['action']['data']['old']
-                  if hash['action']['data']['old']['pos']
+                  if hash['action']['data']['old']['pos'] || hash['action']['data']['old']['idList']
                     message(channel, hash, "moved \"%s\" in %s" % [
                       truncate(hash['action']['data']['card']['name']),
                       Format(:orange, hash['action']['data']['list']['name'])
