@@ -10,10 +10,18 @@ module Cinch
       match(/m reload (\S+)/, method: :reload_plugin)
       match(/m set (\S+) (\S+) (.+)$/, method: :set_option)
 
+      def unauthorized(m)
+        m.reply "Sorry, you don't have the right."
+      end
+
       def list_plugins(m)
-        back = ''
-        @bot.plugins.each { |p| back += "#{p.class.name.split('::').last.downcase} " }
-        m.reply back
+        if m.user.nick == @bot['config']['manager']['admin']
+          back = ''
+          @bot.plugins.each { |p| back += "#{p.class.name.split('::').last.downcase} " }
+          m.reply back
+        else
+          unauthorized(m)
+        end
       end
 
       def load_plugin(m, mapping)
