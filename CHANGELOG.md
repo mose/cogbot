@@ -5,6 +5,7 @@ Cogbot Changelog
 - add link to status on twitter plugin search results
 - add age of status in twitter plugin
 - fix bug on tweet search results that are more than one day old or less than one minute
+- add a weak protection for the manager plugin (which anyways should only be used in development mode)
 
 ### v0.1.1 - 2015-01-28
 - avoid disclose local path in nmanager plugin when plugin not found
