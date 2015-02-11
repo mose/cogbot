@@ -35,10 +35,11 @@ module Cinch
                 ]) or puts json
               when 'updateCard'
                 if hash['action']['data']['old']
-                  if hash['action']['data']['old']['pos'] || hash['action']['data']['old']['idList']
-                    message(channel, hash, "moved \"%s\" in %s" % [
+                  if hash['action']['data']['listAfter']
+                    message(channel, hash, "moved \"%s\" from %s to %s" % [
                       truncate(hash['action']['data']['card']['name']),
-                      Format(:orange, hash['action']['data']['list']['name'])
+                      Format(:orange, hash['action']['data']['listBefore']['name']),
+                      Format(:orange, hash['action']['data']['listAfter']['name'])
                     ])
                   elsif hash['action']['data']['old']['desc']
                     message(channel, hash, "changed desc on \"%s\" in %s to \"%s\"" % [
