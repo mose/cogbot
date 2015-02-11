@@ -4,24 +4,32 @@ module Cinch
     class Manager
       include Cinch::Plugin
 
+      match(/m test/, method: :test)
+
       match(/m list/, method: :list_plugins)
       match(/m load (\S+)/, method: :load_plugin)
       match(/m unload (\S+)/, method: :unload_plugin)
       match(/m reload (\S+)/, method: :reload_plugin)
       match(/m set (\S+) (\S+) (.+)$/, method: :set_option)
 
-      def unauthorized(m)
-        m.reply "Sorry, you don't have the right."
+      def authorized(m, &block)
+	if @bot.config.options['cogconf']['manager']['admin'].include? m.user.nick
+	  instance_eval(&block)
+	else
+          m.reply "Sorry, you don't have the right."
+	end
+      end
+
+      def test(m)
+	authorized m do
+        	m.reply "passed."
+	end
       end
 
       def list_plugins(m)
-        if m.user.nick == @bot['config']['manager']['admin']
-          back = ''
-          @bot.plugins.each { |p| back += "#{p.class.name.split('::').last.downcase} " }
-          m.reply back
-        else
-          unauthorized(m)
-        end
+        back = ''
+        @bot.plugins.each { |p| back += "#{p.class.name.split('::').last.downcase} " }
+        m.reply back
       end
 
       def load_plugin(m, mapping)
