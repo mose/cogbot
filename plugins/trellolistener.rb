@@ -58,13 +58,23 @@ module Cinch
                         Format(:orange, hash['action']['data']['list']['name'])
                       ])
                     end
-                  elsif hash['action']['data']['old']['due'] != nil
-                    date = Date.parse(hash['action']['data']['old']['due']).strftime("%a %-d %b")
-                    message(channel, hash, "changed date on \"%s\" to %s to \"%s\"" % [
-                      truncate(hash['action']['data']['card']['name']),
-                      Format(:yellow, date),
-                      truncate(hash['action']['data']['card']['desc'])
-                    ])
+                  elsif hash['action']['data']['old'].has_key? 'due'
+                    date_new Date.parse(hash['action']['card']['due']).strftime("%a %-d %b")
+                    if hash['action']['data']['old']['due']
+                      date_old = Date.parse(hash['action']['data']['old']['due']).strftime("%a %-d %b")
+                      message(channel, hash, "changed date on \"%s\" from %s to %s to \"%s\"" % [
+                        truncate(hash['action']['data']['card']['name']),
+                        Format(:yellow, date_old),
+                        Format(:yellow, date_new),
+                        truncate(hash['action']['data']['card']['desc'])
+                      ])
+                    else
+                      message(channel, hash, "set date on \"%s\" to %s to \"%s\"" % [
+                        truncate(hash['action']['data']['card']['name']),
+                        Format(:yellow, date_new),
+                        truncate(hash['action']['data']['card']['desc'])
+                      ])
+                    end
                   else
                     puts "---- no known old ----"
                     bot.loggers.debug(json)
