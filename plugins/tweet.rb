@@ -31,7 +31,7 @@ EOT
         timespent = now - timestamp
         case timespent
         when 0..60
-          "#{round(timespent)}s ago"
+          "#{timespent.round}s ago"
         when 61..3600
           "#{(timespent/60).floor}m ago"
         when 3601..86400
