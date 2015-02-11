@@ -58,14 +58,21 @@ module Cinch
                         Format(:orange, hash['action']['data']['list']['name'])
                       ])
                     end
+                  elsif hash['action']['data']['old']['due'] != nil
+                    date = Date.parse(hash['action']['data']['old']['due']).strftime("%a %-d %b")
+                    message(channel, hash, "changed date on \"%s\" to %s to \"%s\"" % [
+                      truncate(hash['action']['data']['card']['name']),
+                      Format(:yellow, date),
+                      truncate(hash['action']['data']['card']['desc'])
+                    ])
                   else
                     puts "---- no known old ----"
-                    bot.loggers.debug(hash.inspect)
+                    bot.loggers.debug(json)
                     puts "---- / no known old ----"
                   end
                 else
                   puts "---- no old ----"
-                  bot.loggers.debug(hash.inspect)
+                  bot.loggers.debug(json)
                   puts "---- / no old ----"
                 end
               when 'addLabelToCard'
