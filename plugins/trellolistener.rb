@@ -18,6 +18,14 @@ module Cinch
               channel = announce['channel']
               action = hash['action']['type']
               case action
+              when 'updateBoard'
+                # not implemented yet
+                # "prefs":{"cardAging":"pirate"}
+                # "prefs":{"voting":"members"}
+              when 'addMemberToBoard'
+                message(channel, hash, "added %s to board" % [
+                  Format(:aqua, hash['action']['member']['username'])
+                ])
               when 'createCard'
                 message(channel, hash, "created \"%s\" in %s" % [
                   truncate(hash['action']['data']['card']['name']),
@@ -109,6 +117,17 @@ module Cinch
                   truncate(hash['action']['data']['card']['name']),
                   Format(:orange, hash['action']['data']['list']['name']),
                   truncate(hash['action']['data']['text'])
+                ])
+              when 'addChecklistToCard'
+                message(channel, hash, "added checklist \"%s\" on \"%s\"" % [
+                  truncate(hash['action']['data']['checklist']['name']),
+                  truncate(hash['action']['data']['card']['name'])
+                ])
+              when 'createCheckItem'
+                message(channel, hash, "added \"%s\" in checklist \"%s\" on \"%s\"" % [
+                  truncate(hash['action']['data']['checkItem']['name']),
+                  truncate(hash['action']['data']['checklist']['name']),
+                  truncate(hash['action']['data']['card']['name'])
                 ])
               else
                 puts "------------- not yet implemented: #{action} ------"
