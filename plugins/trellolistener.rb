@@ -123,10 +123,29 @@ module Cinch
                   truncate(hash['action']['data']['checklist']['name']),
                   truncate(hash['action']['data']['card']['name'])
                 ])
+              when 'updateChecklist'
+                message(channel, hash, "changed checklist \"%s\" to \"%s\"" % [
+                  truncate(hash['action']['data']['checkItem']['name']),
+                  truncate(hash['action']['data']['old']['name'])
+                ])
               when 'createCheckItem'
                 message(channel, hash, "added \"%s\" in checklist \"%s\" on \"%s\"" % [
                   truncate(hash['action']['data']['checkItem']['name']),
                   truncate(hash['action']['data']['checklist']['name']),
+                  truncate(hash['action']['data']['card']['name'])
+                ])
+              when 'updateCheckItem'
+                message(channel, hash, "changed \"%s\" in checklist \"%s\" to \"%s\" on \"%s\"" % [
+                  truncate(hash['action']['data']['old']['name']),
+                  truncate(hash['action']['data']['checklist']['name']),
+                  truncate(hash['action']['data']['checkItem']['name']),
+                  truncate(hash['action']['data']['card']['name'])
+                ])
+              when 'updateCheckItemStateOnCard'
+                message(channel, hash, "changed state of \"%s\" in \"%s\"  to %s on \"%s\"" % [
+                  truncate(hash['action']['data']['checkItem']['name']),
+                  truncate(hash['action']['data']['checklist']['name']),
+                  Format(:yellow, hash['action']['data']['checkItem']['state']),
                   truncate(hash['action']['data']['card']['name'])
                 ])
               else
