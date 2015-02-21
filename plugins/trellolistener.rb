@@ -148,6 +148,10 @@ module Cinch
                   Format(:yellow, hash['action']['data']['checkItem']['state']),
                   truncate(hash['action']['data']['card']['name'])
                 ])
+              when 'moveCardFromBoard'
+                message(channel, hash, "moved card \"%s\" to board \"%s\"" % [
+                  truncate(hash['action']['data']['card']['name']),
+                  truncate(hash['action']['data']['boardTarget']['name'])
               else
                 puts "------------- not yet implemented: #{action} ------"
                 bot.loggers.debug(json)
