@@ -26,6 +26,15 @@ module Cinch
                 message(channel, hash, "added %s to board" % [
                   Format(:aqua, hash['action']['member']['username'])
                 ])
+              when 'removeMemberFromBoard'
+                message(channel, hash, "removed %s from board" % [
+                  Format(:aqua, hash['action']['member']['username'])
+                ])
+              when 'updateList'
+                message(channel, hash, "changed column name %s to %s" % [
+                  Format(:orange, hash['action']['data']['old']['name']),
+                  Format(:orange, hash['action']['data']['list']['name'])
+                ])
               when 'createCard'
                 message(channel, hash, "created \"%s\" in %s" % [
                   truncate(hash['action']['data']['card']['name']),
@@ -102,6 +111,10 @@ module Cinch
                   bot.loggers.debug(json)
                   puts "---- / no old ----"
                 end
+              when 'voteOnCard'
+                message(channel, hash, "voted on card \"%s\"" % [
+                  truncate(hash['action']['data']['card']['name'])
+                ])
               when 'addLabelToCard'
                 message(channel, hash, "labelled \"%s\" as %s" % [
                   truncate(hash['action']['data']['card']['name']),
