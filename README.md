@@ -57,6 +57,8 @@ Trello plugin has some config too, for knowing where to announce the trello chan
       announce:
       - "#trello-announces"
 
+Then in Trello, using the API, you can set a hook to send events to http://ip:port/trellolistener
+
 ## Todo
 
 - document each plugin
