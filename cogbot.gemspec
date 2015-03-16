@@ -16,9 +16,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Cogbot::VERSION
 
-  gem.add_dependency 'cinch', '~> 2.2.3'
+  gem.add_dependency 'cinch', '2.2.4'
   gem.add_dependency "thor", '~> 0.19.1'
-  gem.add_dependency "eventmachine", '~> 1.0.4'
+  gem.add_dependency "eventmachine", '1.0.7'
   gem.add_dependency "eventmachine_httpserver", '~> 0.2.1'
   gem.add_dependency 'nokogiri', '~> 1.6.6'
   gem.add_dependency "daemons", '~> 1.1.9'
