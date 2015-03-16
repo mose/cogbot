@@ -1,6 +1,8 @@
 Cogbot Changelog
 ===================
 
+### v0.1.3 - wip
+
 ### v0.1.2 - 2015-03-16
 - add link to status on twitter plugin search results
 - add age of status in twitter plugin
