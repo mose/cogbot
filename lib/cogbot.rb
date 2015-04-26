@@ -22,7 +22,6 @@ module Cogbot
       begin
         config = YAML::load_file(CONFIG_FILE)
       rescue Exception => e
-        puts e.backtrace
         load "lib/cogbot/setup.rb"
         config['main'] = Cogbot::Setup.init
       end

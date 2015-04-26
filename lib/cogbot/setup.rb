@@ -1,7 +1,8 @@
 module Cogbot
   module Setup
+    extend self
 
-    def self.setvalue default
+    def setvalue(default)
       input = $stdin.gets.chomp
       if input == ''
         default
@@ -10,7 +11,7 @@ module Cogbot
       end
     end
 
-    def self.setbinary default
+    def setbinary(default)
       input = $stdin.gets.chomp
       if input == ''
         default
@@ -19,7 +20,7 @@ module Cogbot
       end
     end
 
-    def self.setlist default
+    def setlist(default)
       input = $stdin.gets.chomp
       if input == ''
         default
@@ -28,7 +29,7 @@ module Cogbot
       end
     end
 
-    def self.init
+    def init
       st = "\033[0;33m"
       en = "\033[m"
 
@@ -60,11 +61,18 @@ module Cogbot
       print "#{st}What plugins will be enabled for #{main['nick']} ?#{en} [#{default['main']['plugins'].join(',')}] "
       main['plugins'] = setlist default['main']['plugins']
 
-      FileUtils.mkdir_p(CONFIG_DIR) unless File.directory?(CONFIG_DIR)
-      FileUtils.mkdir_p(LOG_DIR) unless File.directory?(LOG_DIR)
-      File.open(CONFIG_FILE,'w') { |f| YAML::dump({ 'main' => main }, f) }
+      write(main)
       return main
     end
+
+    def write(content)
+      FileUtils.mkdir_p(CONFIG_DIR) unless File.directory?(CONFIG_DIR)
+      FileUtils.mkdir_p(LOG_DIR) unless File.directory?(LOG_DIR)
+      File.open(CONFIG_FILE,'w') do |f| 
+        YAML::dump({ 'main' => content }, f)
+      end
+    end
+
   end
 end
 
