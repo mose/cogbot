@@ -15,15 +15,11 @@ module Cinch
         @bot.config.options['cogconf']['main']['channels'].each do |channel|
         #['#dev'].each do |channel|
           hash['commits'].each do |c|
-            files = ""
-            files += '[= ' + short(c['modified']).join(' ') + ' ] ' unless c['modified'].empty?
-            files += '[- ' + short(c['removed']).join(' ') + ' ] ' unless c['removed'].empty?
-            files += '[+ ' + short(c['added']).join(' ') + ' ] ' unless c['added'].empty?
             Channel(channel).msg "%s@%s: %s %s" % [
               c['committer']['name'],
               hash['repository']['name'],
               CGI::unescape(c['message']),
-              files
+              files(c)
             ]
           end
         end
@@ -31,6 +27,14 @@ module Cinch
 
       def short(x)
         x.map { |l| l.gsub(/([^\/]*)\//) { |s| s[0,1] + '/'} }
+      end
+
+      def files(c)
+        back = ""
+        back += '[= ' + short(c['modified']).join(' ') + ' ] ' unless c['modified'].empty?
+        back += '[- ' + short(c['removed']).join(' ') + ' ] ' unless c['removed'].empty?
+        back += '[+ ' + short(c['added']).join(' ') + ' ] ' unless c['added'].empty?
+        back   
       end
 
     end
