@@ -6,7 +6,6 @@ require 'net/http'
 require 'daemons'
 require 'thor'
 require 'yajl'
-#require 'cinch/storage/yaml'
 require "lib/cogbot/version"
 require "lib/cogbot/utils"
 require "lib/cogbot/server"
@@ -23,6 +22,7 @@ module Cogbot
       begin
         config = YAML::load_file(CONFIG_FILE)
       rescue Exception => e
+        puts e.backtrace
         load "lib/cogbot/setup.rb"
         config['main'] = Cogbot::Setup.init
       end
@@ -60,9 +60,6 @@ module Cogbot
           c.options = { 'cogconf' => config }
           c.plugins.prefix = config['main']['prefix']
           c.plugins.plugins = plugins
-          #c.storage.backend = Cinch::Storage::YAML
-          #c.storage.basedir = File.join(ROOT_DIR,"yaml")
-          #c.storage.autosave = true
         end
         on :message, "hi" do |m|
           m.reply "Hello, #{m.user.nick}"
