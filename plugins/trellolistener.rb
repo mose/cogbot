@@ -50,7 +50,7 @@ module Cinch
         @member = action['member']['username'] if action['member']
         @data = action['data']
         @type = action['type']
-        @card = truncate(@data['card']['name'])
+        @card = @data['card']['name'] ? truncate(@data['card']['name']) : @data['card']['id']
         @notfound = false
       end
 
@@ -95,15 +95,28 @@ module Cinch
         ]
       end
 
+      def createList
+        "created new column %s" % [
+          format(:orange, @data['list']['name'])
+        ]
+      end
+
       def updateList
         "changed column name %s to %s" % [
           format(:orange, @data['old']['name']),
-          format(:orange, @data['list']['name'])
+          format(:yellow, @data['list']['name'])
         ]
       end
 
       def createCard
         "created \"%s\" in %s" % [
+          @card,
+          format(:orange, @data['list']['name'])
+        ]
+      end
+
+      def deleteCard
+        "deleted \"%s\" from %s" % [
           @card,
           format(:orange, @data['list']['name'])
         ]
@@ -226,11 +239,47 @@ module Cinch
         ]
       end
 
+      def updateLabel
+        if @data['old']
+          if @data['old']['name']
+            "changed label name \"%s\" to \"%s\"" % [
+              format(:orange, @data['old']['name']),
+              format(:yellow, @data['label']['name'])
+            ]
+          elsif @data['old']['color']
+            "changed label \"%s\" color from %s to %s" % [
+              format(:green, @data['label']['name']),
+              format(:orange, @data['old']['color']),
+              format(:yellow, @data['label']['color'])
+            ]
+          else
+            invalidate
+          end
+        else
+          invalidate
+        end
+      end
+
       def commentCard
         "commented on \"%s\" in %s: %s" % [
           @card,
           format(:orange, @data['list']['name']),
           truncate(@data['text'])
+        ]
+      end
+
+      def updateComment
+        "updated comment on \"%s\" in %s: %s" % [
+          @card,
+          format(:orange, @data['list']['name']),
+          truncate(@data['text'])
+        ]
+      end
+
+      def deleteComment
+        "deleted comment on \"%s\" in %s" % [
+          @card,
+          format(:orange, @data['list']['name']),
         ]
       end
 
