@@ -4,6 +4,7 @@
 [![Downloads](http://img.shields.io/gem/dt/cogbot.svg)](https://rubygems.org/gems/cogbot)
 [![Dependency Status](https://img.shields.io/gemnasium/mose/cogbot.svg)](https://gemnasium.com/mose/cogbot)
 [![Code Climate](http://img.shields.io/codeclimate/github/mose/cogbot.svg)](https://codeclimate.com/github/mose/cogbot)
+[![Inch](https://inch-ci.org/github/mose/cogbot.svg)](https://inch-ci.org/github/mose/cogbot)
 
 Cogbot is an irc bot written in ruby based on [Cinch bot framework](https://github.com/cinchrb/cinch).
 

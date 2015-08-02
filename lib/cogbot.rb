@@ -10,11 +10,14 @@ require "lib/cogbot/version"
 require "lib/cogbot/utils"
 require "lib/cogbot/server"
 
+# main cogbot module
 module Cogbot
 
+  # cogbot cli parser and launcher
   class Bot < Thor
 
     desc "start", "start cogbot"
+    # manages the start cli command
     def start
 
       # prepare config
@@ -86,6 +89,7 @@ module Cogbot
     end
 
     desc "stop", "stop cogbot"
+    # manages the stop cli command
     def stop
       pid_file = File.join('/', 'tmp', 'cogbot.pid')
       pid = File.read(pid_file).to_i if File.exist?(pid_file)
@@ -93,6 +97,7 @@ module Cogbot
     end
 
     desc "restart", "restart cogbot"
+    # manages the restart cli command, just stopping and startinbg in sequence
     def restart
       stop
       start

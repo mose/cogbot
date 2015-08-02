@@ -1,3 +1,4 @@
+# eventmachine engine for serving as a webhook destination
 class Server < EM::Connection
   include EM::HttpServer
 
