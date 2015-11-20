@@ -16,11 +16,11 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Cogbot::VERSION
 
-  gem.add_dependency 'cinch', '2.2.7'
+  gem.add_dependency 'cinch', '2.3.1'
   gem.add_dependency "thor", '~> 0.19.1'
   gem.add_dependency "eventmachine", '1.0.8'
   gem.add_dependency "eventmachine_httpserver", '~> 0.2.1'
-  gem.add_dependency 'nokogiri', '~> 1.6.6'
+  gem.add_dependency 'nokogiri', '~> 1.6.6.4'
   gem.add_dependency "daemons", '~> 1.2.3'
 
   gem.add_dependency 'twitter', '~> 5.15.0'  # twitter plugin
