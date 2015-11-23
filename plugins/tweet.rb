@@ -2,7 +2,6 @@
 # get tokens on https://apps.twitter.com
 
 require 'twitter'
-require 'awesome_print'
 
 module Cinch
   module Plugins

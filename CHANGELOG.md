@@ -1,6 +1,9 @@
 Cogbot Changelog
 ===================
 
+### v0.1.4 - 2015-11-23
+- removed a debug require from twitter plugin
+
 ### v0.1.3 - 2015-11-20
 - add more listened actions on trello listener plugin
 - update dependencies
