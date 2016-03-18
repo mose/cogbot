@@ -35,3 +35,8 @@ trello:
   - 
     channel: "#trello-dev"
     board: "Dev"
+rss:
+  polling: 5
+  announce:
+    - "#cogbot-rss"
+  channel: http://inside.mgt.gandi.net/feed/
