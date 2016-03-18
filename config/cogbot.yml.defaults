@@ -39,4 +39,4 @@ rss:
   polling: 5
   announce:
     - "#cogbot-rss"
-  channel: http://inside.mgt.gandi.net/feed/
+  channel: http://example.com/feed/
