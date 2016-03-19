@@ -11,12 +11,8 @@ module Cinch
 The RSS plugin will poll rss feed every 5 minutes
 EOT
 
-      timer @bot.config.options['rss']['polling'] || 300, method: fetch_rss
-
-      def new(bot)
-        @bot = bot
-        @feeds = []
-      end
+      timer 300, method: :fetch_rss
+#      timer @bot.config.options['rss']['polling'] || 300, method: fetch_rss
 
       def fetch_rss
         open(@bot.config.options['cogconf']['rss']['channel']) do |rss|
