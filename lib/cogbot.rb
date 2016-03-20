@@ -59,6 +59,8 @@ module Cogbot
           c.user = config['main']['nick']
           c.realname = config['main']['nick']
           c.channels = config['main']['channels']
+          c.sasl.username = config['main']['sasl_user']
+          c.sasl.password = config['main']['sasl_pass']
           c.options = { 'cogconf' => config }
           c.plugins.prefix = config['main']['prefix']
           c.plugins.plugins = plugins

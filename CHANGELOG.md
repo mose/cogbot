@@ -1,6 +1,9 @@
 Cogbot Changelog
 ===================
 
+### v0.1.5 - wip
+- add config support for SASL
+
 ### v0.1.4 - 2015-11-23
 - removed a debug require from twitter plugin
 
