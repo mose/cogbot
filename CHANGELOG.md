@@ -1,9 +1,10 @@
 Cogbot Changelog
 ===================
 
-### v0.1.5 - 2016-03-20
-- add config support for SASL
+### v0.1.5 - 2016-03-21
+- add config support for SASL auth
 - add a rss plugin
+- enabled multi-cogbot instantiation using the CONFIG_DIR env variable
 
 ### v0.1.4 - 2015-11-23
 - removed a debug require from twitter plugin

@@ -18,6 +18,7 @@ team that uses irc as a main shared communication space:
 * the urban dictionary to make us laugh
 * a twitter search plugin
 * a trello webhooks listener
+* a RSS announce poller
 * and some other more or less used features
 
 
@@ -33,6 +34,15 @@ At first launch:
 
 you will be prompted to create a configuration file in ~/.cogbot/cogbot.yml
 When this is done you can launch again and it will just run according to your configuration.
+
+To stop the robot, just use
+
+    cogbot stop
+
+You can specify an alternative config directory using the COGBOT_DIR environment variable:
+
+    COGBOT_DIR=~/.cogbot-alt cogbot start
+    COGBOT_DIR=~/.cogbot-alt cogbot stop
 
 ## Configuration
 

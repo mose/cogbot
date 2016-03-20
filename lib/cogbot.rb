@@ -35,7 +35,7 @@ module Cogbot
         :dir_mode => :normal,
         :log_dir => LOG_DIR,
         :log_output => true,
-        :dir => File.join('/', 'tmp')
+        :dir => CONFIG_DIR
       )
 
       # checkout plugins
@@ -93,7 +93,7 @@ module Cogbot
     desc "stop", "stop cogbot"
     # manages the stop cli command
     def stop
-      pid_file = File.join('/', 'tmp', 'cogbot.pid')
+      pid_file = File.join(CONFIG_DIR, 'cogbot.pid')
       pid = File.read(pid_file).to_i if File.exist?(pid_file)
       Process.kill('TERM', pid)
     end
