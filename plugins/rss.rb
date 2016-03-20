@@ -25,9 +25,11 @@ EOT
           feed.items.reverse.each do |item|
             unless @feeds.include? item.link
               @feeds << item.link
-              @feeds.shift if @feeds.length > 10
-              @bot.config.options['cogconf']['rss']['announce'].each do |announce|
-                Channel(announce).send "#{item.title} (#{item.link})"
+              if @feeds.length > 10
+                @feeds.shift
+                @bot.config.options['cogconf']['rss']['announce'].each do |announce|
+                  Channel(announce).send "#{item.title} (#{item.link})"
+                end
               end
             end
           end
