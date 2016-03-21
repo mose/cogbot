@@ -342,7 +342,7 @@ module Cinch
         while words.count > 0
            word = words.shift
           if (message.size + word.size + 2) > limit
-            message << ' …'
+            message << ' ...'
             words.clear
           else
             message << " #{word}"
