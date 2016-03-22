@@ -36,7 +36,10 @@ trello:
     channel: "#trello-dev"
     board: "Dev"
 rss:
-  polling: 5
-  announce:
-    - "#cogbot-rss"
-  channel: http://example.com/feed/
+  polling: 300
+  channels:
+    -
+      prefix: '[example]'
+      url: http://example.com/feed/
+      announce:
+        - "#cogbot-rss"
