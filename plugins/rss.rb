@@ -20,9 +20,9 @@ EOT
 
       def fetch_rss
         @feeds ||= {}
-        @bot.config.options['cogconf']['rss']['channels'].each do |channel|
-          prefix = channel['prefix']
-          open(@bot.config.options['cogconf']['rss']['channel']) do |rss|
+        @bot.config.options['cogconf']['rss']['channels'].each do |chan|
+          prefix = chan['prefix']
+          open(chan['url']) do |rss|
             feed = RSS::Parser.parse(rss)
             @feeds[prefix] ||= []
             feed.items.reverse.each do |item|
@@ -30,7 +30,7 @@ EOT
                 @feeds[prefix] << item.link
                 # to prevent the first run displays all the items
                 if @feeds[prefix].length > feed.items.length
-                  @bot.config.options['cogconf']['rss']['announce'].each do |announce|
+                  chan['announce'].each do |announce|
                     Channel(announce).send "#{prefix} #{item.title} (#{item.link})"
                   end
                 end
