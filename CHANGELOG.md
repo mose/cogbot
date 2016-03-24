@@ -1,6 +1,8 @@
 Cogbot Changelog
 ===================
 
+### v0.1.7 - wip
+
 ### v0.1.6 - 2016-03-24
 - improve rss plugin for dealing with multi-feed/multi-channel
 

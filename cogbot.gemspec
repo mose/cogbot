@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "cogbot"
   gem.require_paths = ["lib"]
-  gem.version       = Cogbot::VERSION
+  gem.version       = File.read(File.expand_path('../CHANGELOG.md', __FILE__))[/([0-9]+\.[0-9]+\.[0-9]+)/]
 
   gem.add_dependency 'cinch', '2.3.1'
   gem.add_dependency "thor", '~> 0.19.1'
