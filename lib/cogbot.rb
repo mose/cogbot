@@ -6,7 +6,6 @@ require 'net/http'
 require 'daemons'
 require 'thor'
 require 'yajl'
-require "lib/cogbot/version"
 require "lib/cogbot/utils"
 require "lib/cogbot/server"
 
