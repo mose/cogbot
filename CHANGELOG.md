@@ -1,8 +1,8 @@
 Cogbot Changelog
 ===================
 
-### v0.1.6 - wip
-- improve rss plugin for dealing with multi-feed
+### v0.1.6 - 2016-03-24
+- improve rss plugin for dealing with multi-feed/multi-channel
 
 ### v0.1.5 - 2016-03-21
 - add config support for SASL auth
