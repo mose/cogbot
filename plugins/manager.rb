@@ -27,8 +27,6 @@ module Cinch
       def load_plugin(m, mapping)
         authorized m do
           plugin = mapping.downcase.camelize
-          p plugin
-          p mapping
 
           file_name = "#{ROOT_DIR}/plugins/#{mapping.downcase}.rb"
           unless File.exist?(file_name)
