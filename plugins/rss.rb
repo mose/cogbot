@@ -8,14 +8,15 @@ module Cinch
 
       set :plugin_name, 'rss'
       set :help, <<EOT
-The RSS plugin will poll rss feed every 5 minutes
+The RSS plugin will poll rss feed every options['cogconf']['rss']['polling'] minutes
 EOT
 
-      timer 300, method: :fetch_rss
-
-      def new(bot)
+      def initialize(bot)
+        super
         @bot = bot
-        @feeds = []
+        @feeds = {}
+        timer = Timer @bot.config.options['cogconf']['rss']['polling'], method: :fetch_rss
+        timers << timer
       end
 
       def fetch_rss
