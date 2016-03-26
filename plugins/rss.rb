@@ -20,6 +20,7 @@ EOT
       end
 
       def fetch_rss
+        @bot.debug 'Fetching rss'
         @feeds ||= {}
         @bot.config.options['cogconf']['rss']['channels'].each do |chan|
           prefix = chan['prefix']
