@@ -2,6 +2,7 @@ Cogbot Changelog
 ===================
 
 ### v0.1.7 - wip
+- fix rss plugin polling configurable period
 
 ### v0.1.6 - 2016-03-24
 - improve rss plugin for dealing with multi-feed/multi-channel
