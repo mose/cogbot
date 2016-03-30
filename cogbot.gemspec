@@ -17,12 +17,12 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'cinch', '2.3.1'
   gem.add_dependency "thor", '~> 0.19.1'
-  gem.add_dependency "eventmachine", '1.0.9.1'
+  gem.add_dependency "eventmachine", '~> 1.2.0.1'
   gem.add_dependency "eventmachine_httpserver", '~> 0.2.1'
   gem.add_dependency 'nokogiri', '~> 1.6.7.1'
   gem.add_dependency "daemons", '~> 1.2.3'
 
-  gem.add_dependency 'twitter', '~> 5.15.0'  # twitter plugin
+  gem.add_dependency 'twitter', '~> 5.16.0'  # twitter plugin
   gem.add_dependency 'json', '~> 1.8.3' # stackoverflow plugin
   gem.add_dependency 'yajl-ruby', '~> 1.2.1' # rubygems plugin
   gem.add_dependency 'fortune_gem', '~> 0.0.8' # fortune plugin
