@@ -70,6 +70,18 @@ Trello plugin has some config too, for knowing where to announce the trello chan
 
 Then in Trello, using the API, you can set a hook to send events to http://ip:port/trellolistener
 
+For RSS plugin you can specify multiple listener for multiple channels:
+
+    rss:
+      polling: 300
+      channels:
+        -
+          prefix: '[example]'
+          url: http://example.com/feed/
+          announce:
+            - "#cogbot-rss"
+
+
 ## Todo
 
 - document each plugin
