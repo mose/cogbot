@@ -1,0 +1,6 @@
+Cogbot plugins list
+=======================
+
+Manager
+--------
+
