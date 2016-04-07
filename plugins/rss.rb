@@ -33,7 +33,11 @@ EOT
                 # to prevent the first run displays all the items
                 if @feeds[prefix].length > feed.items.length
                   chan['announce'].each do |announce|
-                    Channel(announce).send "#{prefix} #{item.title} (#{item.link})"
+                    msg = "#{prefix} #{item.title} (#{item.link})"
+                    if chan['transform']
+                      msg.gsub! Regexp.new(chan['transform']['regexp']), chan['transform']['replace']
+                    end
+                    Channel(announce).send msg
                   end
                 end
               end

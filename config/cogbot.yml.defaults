@@ -41,5 +41,8 @@ rss:
     -
       prefix: '[example]'
       url: http://example.com/feed/
+      transform:
+        regexp: "http://"
+        replace: "https://"
       announce:
         - "#cogbot-rss"

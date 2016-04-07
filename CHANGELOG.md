@@ -1,6 +1,9 @@
 Cogbot Changelog
 ===================
 
+### v0.1.8- 2016-04-07
+- add a transform config for rss output
+
 ### v0.1.7 - 2016-03-28
 - fix rss plugin polling configurable period
 
