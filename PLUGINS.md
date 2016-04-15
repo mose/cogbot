@@ -24,4 +24,16 @@ fortune     .f
 
 google      .g <searchterm>
                 output first result for a google search
+
+manager     .m list
+                lists loaded plugins
+            .m load <plugin>
+                load plugin <plugin>
+            .m unload <plugin>
+                unload plugin <plugin>
+            .m reload <plugin>
+                reload plugin <plugin>
+                uselful when changing plugin code
+            .m set <plugin> <option> <value>
+                makes possible to change option values for <plugin>
 ```
