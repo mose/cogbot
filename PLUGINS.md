@@ -36,4 +36,9 @@ manager     .m list
                 uselful when changing plugin code
             .m set <plugin> <option> <value>
                 makes possible to change option values for <plugin>
+
+rubygems    .r <searchterm>
+                searches on Rubygems API and returns the first 4 matches
+
+
 ```
