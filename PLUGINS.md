@@ -40,5 +40,6 @@ manager     .m list
 rubygems    .r <searchterm>
                 searches on Rubygems API and returns the first 4 matches
 
-
+shorturl    .short <url>
+                returns a short url for <url> using tinyurl.com
 ```
