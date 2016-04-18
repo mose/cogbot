@@ -6,8 +6,8 @@ require 'net/http'
 require 'daemons'
 require 'thor'
 require 'yajl'
-require "lib/cogbot/utils"
-require "lib/cogbot/server"
+require 'lib/cogbot/utils'
+require 'lib/cogbot/server'
 
 # main cogbot module
 module Cogbot
@@ -15,7 +15,7 @@ module Cogbot
   # cogbot cli parser and launcher
   class Bot < Thor
 
-    desc "start", "start cogbot"
+    desc 'start', 'start cogbot'
     # manages the start cli command
     def start
 
@@ -24,7 +24,7 @@ module Cogbot
       begin
         config = YAML::load_file(CONFIG_FILE)
       rescue Exception => e
-        load "lib/cogbot/setup.rb"
+        load 'lib/cogbot/setup.rb'
         config['main'] = Cogbot::Setup.init
       end
 
@@ -61,7 +61,7 @@ module Cogbot
           c.plugins.prefix = config['main']['prefix']
           c.plugins.plugins = plugins
         end
-        on :message, "hi" do |m|
+        on :message, 'hi' do |m|
           m.reply "Hello, #{m.user.nick}"
         end
       end
@@ -86,7 +86,7 @@ module Cogbot
       bot.quit
     end
 
-    desc "stop", "stop cogbot"
+    desc 'stop', 'stop cogbot'
     # manages the stop cli command
     def stop
       pid_file = File.join(CONFIG_DIR, 'cogbot.pid')
@@ -94,7 +94,7 @@ module Cogbot
       Process.kill('TERM', pid)
     end
 
-    desc "restart", "restart cogbot"
+    desc 'restart', 'restart cogbot'
     # manages the restart cli command, just stopping and startinbg in sequence
     def restart
       stop

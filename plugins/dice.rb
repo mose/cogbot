@@ -3,7 +3,7 @@ module Cinch
     class Dice
       include Cinch::Plugin
 
-      match "roll"
+      match 'roll'
 
       set :plugin_name, 'dice'
       set :help, <<EOT
