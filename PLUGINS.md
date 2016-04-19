@@ -42,4 +42,14 @@ rubygems    .r <searchterm>
 
 shorturl    .short <url>
                 returns a short url for <url> using tinyurl.com
+
+stack       .s <term>
+overflow        returns result of a searcj on <term> from stack overflow
+
+tweet       .t search <term>
+                returns the 3 first matching tweets macthing <term>
+
+urban       .u <term>
+                finds the definition of <term> according to the Urban Dictionary
+                
 ```
