@@ -51,5 +51,15 @@ tweet       .t search <term>
 
 urban       .u <term>
                 finds the definition of <term> according to the Urban Dictionary
-                
+
+
+Listeners       Action
+--------------  --------------------------------------------------------------
+gitlistener     for github webhooks, advertises the aggregate addition, 
+                    modification and deletion from commits
+
+trellolistener  listens to rello webhooks and announces any kind of change
+
+rss             polls multiple rss feeds and announces new items 
+                    to multiple channels
 ```
