@@ -44,10 +44,10 @@ shorturl    .short <url>
                 returns a short url for <url> using tinyurl.com
 
 stack       .s <term>
-overflow        returns result of a searcj on <term> from stack overflow
+overflow        returns result of a search on <term> from stack overflow
 
 tweet       .t search <term>
-                returns the 3 first matching tweets macthing <term>
+                returns the 3 first matching tweets matching <term>
 
 urban       .u <term>
                 finds the definition of <term> according to the Urban Dictionary
@@ -58,8 +58,8 @@ Listeners       Action
 gitlistener     for github webhooks, advertises the aggregate addition, 
                     modification and deletion from commits
 
-trellolistener  listens to rello webhooks and announces any kind of change
+trellolistener  listens to Trello webhooks and announces any kind of change
 
-rss             polls multiple rss feeds and announces new items 
+rss             polls multiple RSS feeds and announces new items 
                     to multiple channels
 ```
