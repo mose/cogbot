@@ -28,8 +28,8 @@ EOT
             feed = RSS::Parser.parse(rss)
             @feeds[prefix] ||= []
             feed.items.reverse.each do |item|
-              unless @feeds[prefix].include? item.link
-                @feeds[prefix] << item.link
+              unless @feeds[prefix].include? item.title
+                @feeds[prefix] << item.title
                 # to prevent the first run displays all the items
                 if @feeds[prefix].length > feed.items.length
                   chan['announce'].each do |announce|
@@ -42,8 +42,8 @@ EOT
                 end
               end
             end
-            if @feeds[prefix].length > feed.items.length
-              @feeds[prefix] = @feeds[prefix][-feed.items.length, feed.items.length]
+            if @feeds[prefix].length > (feed.items.length * 3)
+              @feeds[prefix] = @feeds[prefix][-(feed.items.length * 3), (feed.items.length * 3)]
             end
           end
         end
