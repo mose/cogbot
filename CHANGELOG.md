@@ -1,7 +1,10 @@
 Cogbot Changelog
 ===================
 
-### v0.1.8- 2016-04-07
+### v0.1.9 - 2016-06-01
+- use title rather than url for rss caching
+
+### v0.1.8 - 2016-04-07
 - add a transform config for rss output
 
 ### v0.1.7 - 2016-03-28
