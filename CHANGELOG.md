@@ -1,6 +1,9 @@
 Cogbot Changelog
 ===================
 
+### v0.1.10 - 2016-07-04
+- update dependencies (nokogiri security update)
+
 ### v0.1.9 - 2016-06-01
 - use title rather than url for rss caching
 
