@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "thor", '~> 0.19.1'
   gem.add_dependency "eventmachine", '~> 1.2.0.1'
   gem.add_dependency "eventmachine_httpserver", '~> 0.2.1'
-  gem.add_dependency 'nokogiri', '~> 1.6.7.2'
+  gem.add_dependency 'nokogiri', '~> 1.6.8'
   gem.add_dependency "daemons", '~> 1.2.3'
 
   gem.add_dependency 'twitter', '~> 5.16.0'  # twitter plugin
