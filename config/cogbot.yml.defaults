@@ -46,3 +46,5 @@ rss:
         replace: "https://"
       announce:
         - "#cogbot-rss"
+ip:
+  url: http://example.com/my-ip.php
