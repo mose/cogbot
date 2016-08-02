@@ -52,6 +52,9 @@ tweet       .t search <term>
 urban       .u <term>
                 finds the definition of <term> according to the Urban Dictionary
 
+ip          .ip
+                gets the ip of the server where the bot runs
+
 
 Listeners       Action
 --------------  --------------------------------------------------------------

@@ -1,6 +1,9 @@
 Cogbot Changelog
 ===================
 
+### v0.1.12 - wip
+- add a plugin for dynip
+
 ### v0.1.11 - 2016-07-04
 - fixed update dependencies (nokogiri security update)
 
