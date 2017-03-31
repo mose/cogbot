@@ -1,8 +1,9 @@
 Cogbot Changelog
 ===================
 
-### v0.1.12 - wip
+### v0.1.12 - 2017-04-01
 - add a plugin for dynip
+- bundle update for security alert on libxml2
 
 ### v0.1.11 - 2016-07-04
 - fixed update dependencies (nokogiri security update)
