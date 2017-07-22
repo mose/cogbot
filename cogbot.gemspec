@@ -19,11 +19,11 @@ Gem::Specification.new do |gem|
   gem.add_dependency "thor", '~> 0.19.4'
   gem.add_dependency "eventmachine", '~> 1.2.3'
   gem.add_dependency "eventmachine_httpserver", '~> 0.2.1'
-  gem.add_dependency 'nokogiri', '~> 1.7.1'
+  gem.add_dependency 'nokogiri', '~> 1.8.0'
   gem.add_dependency "daemons", '~> 1.2.4'
 
   gem.add_dependency 'twitter', '~> 6.1.0'  # twitter plugin
-  gem.add_dependency 'json', '~> 2.0.3' # stackoverflow plugin
+  gem.add_dependency 'json', '~> 2.1.0' # stackoverflow plugin
   gem.add_dependency 'yajl-ruby', '~> 1.3.0' # rubygems plugin
   gem.add_dependency 'fortune_gem', '~> 0.0.9' # fortune plugin
 
