@@ -117,4 +117,4 @@ To reload plugins while developing, you can issue, on a channel where your bot i
 
 MIT license
 
-Copyright (c) 2012-15 mose at mose
+Copyright (c) 2012-18 mose at mose

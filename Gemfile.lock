@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cogbot (0.1.13)
+    cogbot (0.1.14)
       cinch (= 2.3.4)
       daemons (~> 1.2.6)
       eventmachine (~> 1.2.5)
