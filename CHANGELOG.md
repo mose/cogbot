@@ -1,6 +1,9 @@
 Cogbot Changelog
 ===================
 
+### v0.1.14 - 2018-01-27
+- security - bundle update for nokogiri and yajl-ruby
+
 ### v0.1.13 - 2017-07-22
 - security - bundle update for nokogiri
 
